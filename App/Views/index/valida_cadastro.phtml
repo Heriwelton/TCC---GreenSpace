@@ -1,0 +1,57 @@
+<?php
+    session_start();
+
+    include_once("config.php"); 
+
+    $usuario = new stdClass();
+    $usuario->nome = $_POST["nome"];   
+    $usuario->email = $_POST["email"];   
+    $usuario->senha = $_POST["senha"];
+    $usuario->confirmar_senha = $_POST["confirmar_senha"];
+
+    /*Confere se 'senha' e 'confirmar_senha' estão iguais*/
+
+    if(!($usuario->senha == $usuario->confirmar_senha)){
+        header('Location: cadastro.php?cadastro=error1');
+        die;
+    }
+
+    /*verifica se a senha digita contem no minimo 8 caracteres*/
+
+    if(strlen($usuario->senha) < 9){
+        header('Location: cadastro.php?cadastro=error2');
+        die;
+    }
+
+    /*verifica se o email digitado já existe no banco*/
+
+    $sql_email = "SELECT email FROM aluno WHERE email = '{$usuario->email}'";
+    $email_existentes = $conn->query($sql_email);
+
+    if($email_existentes->num_rows > 0){
+        header('Location: cadastro.php?cadastro=erro3');
+        die;
+    }
+
+    /* Cadastra o usuario no banco */
+
+    $senha_criptografada = md5($usuario->senha);
+
+    $sql = "INSERT INTO aluno (nome, email, senha) VALUES ('{$usuario->nome}','{$usuario->email}','{$senha_criptografada}')";
+    $usuario_sql = mysqli_query($conn, $sql);
+    
+    if($usuario_sql){
+        header('Location: login.php?cadastro=success');
+        die;
+    } else {
+        header('Location: login.php?cadastro=error4');      
+        die;
+    }
+    
+
+
+
+    echo '<pre>';
+    print_r($usuario);
+?>
+

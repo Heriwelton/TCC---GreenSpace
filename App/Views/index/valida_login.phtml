@@ -1,0 +1,54 @@
+<?php
+
+session_start();
+
+include_once("config.php"); 
+
+$usuario = new stdClass();
+$usuario->email = $_POST["email"];   
+$usuario->senha = md5($_POST["senha"]);   
+
+
+//Verifica se existe um email registrado de acordo com o que o usuario digitou, caso exista é retornado para a variavel $email
+
+$sql_email = "SELECT email FROM aluno WHERE email = '" . $usuario->email."'";
+$sql_email_selecionado = $conn->query($sql_email) or die($mysqli->error);
+$email = $sql_email_selecionado->fetch_array();
+
+//Verifica se existe uma senha registrada de acordo com o que o usuario digitou, caso exista é retornado para a variavel $senha
+
+$sql_senha = "SELECT senha FROM aluno WHERE senha = '" . $usuario->senha."'";
+$sql_senha_selecionado = $conn->query($sql_senha) or die($mysqli->error);
+$senha = $sql_senha_selecionado->fetch_array();
+
+
+if(!isset($email)){
+    //email não encontrado
+    header('Location: login.php?login=error1');
+    die;
+}
+if(!isset($senha)){
+    //senha não encontrada
+    header('Location: login.php?login=error1');
+    die;
+}
+
+
+//variavel que verifica se a autenticacao foi realizada
+$usuario_autenticado = false;
+
+if($email['email'] == $usuario->email && $senha['senha'] == $usuario->senha) {
+    $usuario_autenticado = true;
+}
+
+
+if ($usuario_autenticado) {
+    $_SESSION['autenticado'] = 'SIM';
+    header('Location: menu_inicial.php');
+}else{
+    $_SESSION['autenticado'] = 'NAO';
+    header('Location: login.php?login=error2');
+}
+
+
+?>
