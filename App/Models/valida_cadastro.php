@@ -27,7 +27,6 @@ class valida_cadastro extends Model {
         $stmt->bindValue(':Email', $this->__get('Email'));
         $stmt->bindValue(':Senha', $this->__get('Senha'));     
         $stmt->execute();
-
         return $this;
 
     }
@@ -64,6 +63,57 @@ class valida_cadastro extends Model {
         $stmt->execute();
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function valida_login(){
+
+        $query = "select UserID, Nome, Email from usuarios where email = :Email and Senha = :Senha";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':Email', $this->__get('Email'));
+        $stmt->bindValue(':Senha', $this->__get('Senha'));
+        $stmt->execute();
+
+        $usuario = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        if($usuario['UserID'] != '' && $usuario['Nome'] != '' ){
+            $this->__set('UserID', $usuario['UserID']);
+            $this->__set('Nome', $usuario['Nome']);
+        }
+
+        return $this;
+    }
+
+    public function seleciona_lgn_lat(){
+
+        $query = "select lat, lng from enderecos where UserID = :UserID";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':UserID', $this->__get('UserID'));
+
+        $stmt->execute();
+
+        $geocalizacao = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        if($geocalizacao['lat'] != '' && $geocalizacao['lng'] != ''){
+            $this->__set('lat', $geocalizacao['lat']);
+            $this->__set('lng', $geocalizacao['lng']);
+        }
+
+        return $this;
+    }
+
+    public function valida_cadastro(){
+
+        $query = "SELECT UserID FROM usuarios WHERE Email = :Email";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':Email', $this->__get('Email'));
+        $stmt->execute();
+        
+        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
+        if ($result) {
+            return $result['UserID'];
+        } else {
+            return null; 
+        }
     }
 
 }

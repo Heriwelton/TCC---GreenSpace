@@ -1,0 +1,98 @@
+<?php  
+session_start();
+
+
+?>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Cadastro - inicio</title>
+
+    <script>
+			function getDadosEnderecoPorCEP(cep) {
+				let url = 'https://viacep.com.br/ws/'+cep+'/json/'
+
+				let xmlHttp = new XMLHttpRequest()
+				xmlHttp.open('GET', url)
+
+				xmlHttp.onreadystatechange = () => {
+					if(xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+						let dadosJSONText = xmlHttp.responseText
+						let dadosJSONObj = JSON.parse(dadosJSONText)
+
+						document.getElementById('endereco').value = dadosJSONObj.logradouro
+            document.getElementById('bairro').value = dadosJSONObj.bairro
+						document.getElementById('cidade').value = dadosJSONObj.localidade
+            document.getElementById('uf').value = dadosJSONObj.uf
+						
+					}
+				}
+
+				xmlHttp.send()
+			}
+		</script>
+
+
+
+
+
+  </head>
+
+  <body>
+    <div class="container">    
+      <div class="row">
+
+        <div class="card-login">
+          <div class="card">
+            <div class="card-header">
+              Cadastro            
+            </div>
+            <div class="card-body">
+              <form action="/valida_endereco" method="post">
+
+                <div class="form-group">
+                  <label>CEP</label>
+                  <input type="text" name="cep" class="form-control"  onblur="getDadosEnderecoPorCEP(this.value)" id="cep" required>
+                </div>
+
+                <div class="form-group">
+                  <label>Logradouro</label>
+                  <input name="logradouro" class="form-control" id="endereco" required>                                   
+                </div>
+
+
+                <div class="form-group">
+                  <label>Complemento</label>
+                  <input name="complemento" class="form-control"  required>
+                </div>
+
+                <div class="form-group" >
+                  <label>Bairro</label>
+                  <input name="bairro" class="form-control" id="bairro"  required >
+                </div>
+
+                <div class="form-group" >
+                  <label>Cidade</label>
+                  <input name="cidade" class="form-control"  id="cidade" required >
+                </div>
+
+                <div class="form-group" >
+                  <label>Estado</label>
+                  <input name="estado" class="form-control"  id="uf" required >
+                </div>
+
+                <button class="btn btn-lg btn-info btn-block" type="submit" onclick="">Criar conta</button>
+              </form>
+            </div>
+          </div>
+        </div> 
+    </div>
+    <script type="text/javascript">
+      $(document).ready(function(jQuery){
+      $('#cep').mask('99999-999');
+
+      })
+    </script>  
+
+  </body>
+</html>

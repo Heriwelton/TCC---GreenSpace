@@ -10,6 +10,18 @@ body{
   justify-content: center;
 }
 
+.align-span{
+  margin-right: 20%;
+}
+
+/*customização de botões*/
+
+.navbar-dark .navbar-nav .nav-link.disabled {
+  color: #fff;
+}
+
+
+
 /*tratamento de erros*/
 .exception p{
   color: red;
@@ -96,23 +108,88 @@ body{
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-/*container de login/cadastro*/ 
-.card-login {
-  padding: 30% 0 0 0;
-  width: 300px;
+  /*container de login/cadastro*/ 
+  .card-login {
+    padding: 30% 0 0 0;
+    width: 300px;
 
-}
+  }
+
+  .msg-recepcao{
+    border: 1px solid;
+  }
+
+  /*menu de navegação*/
+
+
 
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-/*container de login/cadastro*/ 
-.card-login {
-  padding: 30% 0 0 0;
-  width: 400px;
+  /*container de login/cadastro*/ 
+    .card-login {
+      padding: 30% 0 0 0;
+      width: 400px;
 
-}
+    }
+
+    /*menu de navegação*/
+    .msg-recepcao{
+      position: relative;
+      margin: auto 25px;
+    }
+
+    .navbar-dark .navbar-nav .nav-link{
+      color: #fff;
+      font-size: 1.2em;
+      text-shadow: 2px 2px 2px black;
+      text-transform: uppercase;
+      font-weight: bold;
+      
+    }
+    .navbar-dark .navbar-nav .nav-link:hover{
+      color: #a9a9a9;
+    }
+
+    .navbar-dark .navbar-nav .nav-link.disabled{
+      color: #fff;
+    }
+
+
+
+    #corpo-modulo-meu-jardim{
+      height: 100vh;
+      background-color: #00BF63;
+  
+  }
+
+  nav.navbar-custom {
+    background: #0477405b;
+
+    border-bottom: 2px solid;
+  }
+
+  .container-custom{
+
+    height: 92vh;
+    padding: 15px;
+  }
+
+  /* carousel modulo meu jardim */
+  .carousel-custom{
+    border: 5px solid;
+
+  }
+
+  .container-carousel{
+    border: 1px solid;
+    
+  }
+
+  .carousel-title{
+    text-align: center;
+  }
 
 }
 
