@@ -1,0 +1,218 @@
+<?php
+// Verificar se a mensagem de alerta está definida
+if (isset($_SESSION['alert_message'])) {
+    echo "<script>alert('" . htmlspecialchars($_SESSION['alert_message']) . "');</script>";
+    // Limpar a mensagem de alerta da sessão para que não seja exibida novamente
+    unset($_SESSION['alert_message']);
+}
+?>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Login - meu comércio</title>
+  </head>
+  
+  <body>
+    <div id="corpo-modulo-meu-comercio">
+      <nav class="navbar navbar-expand-sm navbar-dark navbar-custom">
+          <!--Logo-->
+          <div class="navbar-brand clima-custom">
+            <?php echo $_SESSION["cidade"] ?><span class="align-span"></span><span><?php echo $_SESSION["temperatura"]  ?>ºC</span> <img src="https://openweathermap.org/img/wn/<?php echo $_SESSION["icone"] ?>.png" alt='Weather Icon'> <span class="align-span"><?php echo $_SESSION["clima"] ?></span>
+          </div>
+
+          <!-- Menu Hamburguer -->
+          <button class="navbar-toggler" data-toggle="collapse" data-target="#navegacao3">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!--Navegaçao-->
+        <div class="collapse navbar-collapse" id="navegacao3">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                  <a  class="nav-link msg-recepcao disabled">Olá 
+                    
+                  <?php
+                        
+                  if($_SESSION["Nome"]) {
+                      
+                  echo $_SESSION["Nome"] ?>                                                               
+                  <?php } ?>
+
+                  </a>
+                </li>
+                
+                <li class="nav-item dropdown">
+                  <a href="" class="nav-link msg-recepcao dropdown-toggle" data-toggle="dropdown">Meu Comércio</a>
+                  <div class="dropdown-menu">
+                    <a href="/modulo_meu_jardim" class="dropdown-item">Meu Jardim</a>
+                    <a href="/modulo_comunidade" class="dropdown-item">Comunidade</a>
+                    <a href="/modulo_vendedores" class="dropdown-item">Vendedores</a>
+                    <a href="/sair" class="dropdown-item">Sair</a>
+                  </div>
+
+                </li>
+
+            </ul>
+        </div>
+        
+        </nav>
+          <div class="container-custom">
+
+          
+
+
+          <?php if(empty($_GET)) { ?>    
+
+          <div class="row justify-content-center">
+            <div class="col-5"><h1 class ="carousel-title">Informações complementares</h1></div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-10 container-carousel">
+              <div class="form-estoque ">
+                <form action="/salvar_estoque" method="POST">
+                  <input type="hidden" name="produtoid" value="<?php echo $_POST["ProdutoID"] ?>">
+                  <div class="form-group ">
+                      <label for="produto">Produto</label>
+                      <input class="form-control" type="text" name="produto" value="<?php echo $_POST["NomeProduto"] ?>" id="produto" readonly>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="usuario">Quantidade</label>
+                      <input class="form-control" type="text" name="quantidade" placeholder="Digite a quantidade">
+                  </div>
+
+                  <p>Ramo</p>
+                  <div>
+                      <input type="radio" id="flores" name="ramo" value="flores">
+                      <label for="flores">Flores</label>
+
+                      <input type="radio" id="vegetais" name="ramo" value="vegetais" class="ml-4">
+                      <label for="vegetais">Vegetais</label>
+
+                      <input type="radio" id="frutas" name="ramo" value="frutas" class="ml-4">
+                      <label for="frutas">Frutas</label>
+                  </div>
+
+                  <div class="form-group">
+                      <label for="usuario">Data plantio</label>
+                      <input class="form-control" type="text" name="data_plantio" value="<?php echo $_POST["DataInicial"] ?>" readonly>
+                  </div>
+
+                  <button type="submit" class="btn btn-add-estoque">Salvar</button>
+
+                </form>
+
+              </div>
+            </div>          
+          </div>      
+
+          <?php } ?>
+
+
+          <?php if(isset($_GET['edit_stock']) && isset($_SESSION['item_estoque']) ) { 
+              $itemEstoque = $_SESSION['item_estoque'];          
+            ?>    
+
+            <div class="row justify-content-center">
+              <div class="col-5"><h1 class ="carousel-title-branco">Editar estoque</h1></div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-10 container-carousel">
+                <div class="form-estoque ">
+                  <form action="/editar_estoque" method="POST">
+
+                    <input type="hidden" name="estoqueid" value="<?php echo $itemEstoque["EstoqueID"] ?>">
+
+                    <div class="form-group ">
+                        <label for="produto">Produto</label>
+                        <input class="form-control" type="text" name="produto" value="<?php echo $itemEstoque["produto"] ?>" id="produto" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usuario">Quantidade</label>
+                        <input class="form-control" type="text" value="<?php echo $itemEstoque["quantidade"] ?>" name="quantidade" placeholder="Digite a quantidade">
+                    </div>
+
+                    <p>Ramo</p>
+                    <div>
+                        <input type="radio" id="flores" name="ramo" value="flores">
+                        <label for="flores">Flores</label>
+
+                        <input type="radio" id="vegetais" name="ramo" value="vegetais" class="ml-4">
+                        <label for="vegetais">Vegetais</label>
+
+                        <input type="radio" id="frutas" name="ramo" value="frutas" class="ml-4">
+                        <label for="frutas">Frutas</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usuario">Data plantio</label>
+                        <input class="form-control" type="text" name="data_plantio" value="<?php echo $itemEstoque["dataPlantio"] ?>" readonly>
+                    </div>
+
+                    <button type="submit" class="btn btn-add-estoque">Salvar alterações</button>
+
+                  </form>
+
+                </div>
+              </div>          
+            </div>      
+
+            <?php } ?>
+
+
+
+          <?php if(isset($_GET['user_stock'])) { ?>
+          <div class="row justify-content-center">
+              <div class="col-5">
+                  <h1 class="carousel-title-branco">Meu estoque</h1>
+              </div>
+          </div>
+          <div class="row justify-content-center">
+              <div class="col-10 container-carousel">
+                  <table class="table table-hover table-striped table-bordered table-custom">
+                      <thead>
+                          <tr>
+                              <th>Produto Principal</th>  
+                              <th>Quantidade</th>
+                              <th>Data de plantio</th>
+                              <th>Ramo Principal</th>
+                              <th>Ação</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <?php foreach ($_SESSION["itens_estoque"] as $item): ?>
+                              <tr>
+                                  <td><?php echo htmlspecialchars($item["Produto_principal"]); ?></td>
+                                  <td><?php echo htmlspecialchars($item["Quantidade"]); ?></td>
+                                  <td><?php echo htmlspecialchars($item["DataPlantio"]); ?></td>
+                                  <td><?php echo htmlspecialchars($item["Ramo_principal"]); ?></td>
+                                  <td>
+                                      <form method="POST" action="/excluir_item_estoque">
+                                          <input type="hidden" name="EstoqueID" value="<?php echo htmlspecialchars($item["EstoqueID"]); ?>">
+                                          <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                                      </form> 
+                                      <form method="POST" action="/editar_item_estoque">
+                                          <input type="hidden" name="produto" value="<?php echo htmlspecialchars($item["Produto_principal"]); ?>">
+                                          <input type="hidden" name="quantidade" value="<?php echo htmlspecialchars($item["Quantidade"]); ?>">
+                                          <input type="hidden" name="dataPlantio" value="<?php echo htmlspecialchars($item["DataPlantio"]); ?>">
+                                          <input type="hidden" name="EstoqueID" value="<?php echo htmlspecialchars($item["EstoqueID"]); ?>">
+                                          <button type="submit" class="btn btn-warning btn-sm">Editar</button>
+                                      </form>                                       
+                                  </td>
+                                                                                                     
+                              </tr>
+                          <?php endforeach; ?>
+                      </tbody>
+                  </table>
+              </div>          
+            </div>      
+          <?php } ?>
+
+          </div>
+        </div>
+  </body>
+
+</html>

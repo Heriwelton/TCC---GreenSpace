@@ -1,0 +1,36 @@
+
+
+[
+    {
+        "nome": "Cenoura Brasília",
+        "imagem": "../img/cenoura.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar cenoura Brasília, selecione um local ensolarado com solo bem drenado e livre de pedras ou detritos. Prepare o solo, removendo quaisquer ervas daninhas e adicionando composto orgânico para melhorar a fertilidade.",
+        "temp_recomendavel": "10,25",
+        "tempo_colheita": "3 meses, +3 months",
+        "tempo_regar": "1 semana"
+    
+    },
+    {
+        "nome": "Cenoura Nantes",
+        "imagem": "../img/cenoura.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar cenoura Nantes, selecione um local ensolarado com solo bem drenado e livre de pedras ou detritos. Prepare o solo, removendo quaisquer ervas daninhas e adicionando composto orgânico para melhorar a fertilidade.",
+        "temp_recomendavel": "10,25",
+        "tempo_colheita": "2 meses, +2 months",
+        "tempo_regar": "1 semana"
+        
+    },
+    {
+        "nome": "Cenoura Kuroda",
+        "imagem": "../img/cenoura.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar cenoura Kuroda, selecione um local ensolarado com solo bem drenado e livre de pedras ou detritos. Prepare o solo, removendo quaisquer ervas daninhas e adicionando composto orgânico para melhorar a fertilidade.",
+        "temp_recomendavel": "10,25",
+        "tempo_colheita": "3 meses, +3 months",
+        "tempo_regar": "1 semana"
+    }
+
+
+
+]

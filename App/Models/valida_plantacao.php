@@ -4,12 +4,7 @@ namespace App\Models;
 
 use MF\Model\Model;
 
-class valida_cadastro extends Model {
-
-    private $UserID;
-    private $Nome;
-    private $Email;
-    Private $Senha;
+class valida_plantacao extends Model {
 
     public function __get($atributo){
         return $this->$atributo;
@@ -18,92 +13,56 @@ class valida_cadastro extends Model {
     public function __set($atributo, $valor){
         $this->$atributo = $valor;
     }
-
+    
     public function salvar() {
         
-        $query = "insert into usuarios(Nome, Email, Senha)values(:Nome, :Email, :Senha)";
+        $query = "insert into produtos(NomeProduto, Imagem, Dica, Temp_recomendavel, Tempo_colheita, Tempo_regar, UserID)values(:Nome, :Imagem, :Dica, :Temp_recomendavel, :Tempo_colheita, :Tempo_regar, :UserID)";
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':Nome', $this->__get('Nome'));
-        $stmt->bindValue(':Email', $this->__get('Email'));
-        $stmt->bindValue(':Senha', $this->__get('Senha'));     
+        $stmt->bindValue(':Imagem', $this->__get('Imagem'));
+        $stmt->bindValue(':Dica', $this->__get('Dica'));     
+        $stmt->bindValue(':Temp_recomendavel', $this->__get('temp_recomendavel')); 
+        $stmt->bindValue(':Tempo_colheita', $this->__get('tempo_colheita')); 
+        $stmt->bindValue(':Tempo_regar', $this->__get('tempo_regar')); 
+        $stmt->bindValue(':UserID', $this->__get('UserID')); 
         $stmt->execute();
         return $this;
 
     }
 
-    //Confere se 'senha' e 'confirmar_senha' estão iguais
-    public function validarSenha(){
-        $valido = true;
-
-        if(!($this->__get('Senha') == md5($_POST["confirmar_senha"]))){
-            header('Location: cadastro?cadastro=error1');
-        }
-
-        return $valido;
-    }
-
-    //verifica se a senha digita contem no minimo 8 caracteres
-
-    public function validarTamanhoSenha(){
-        $valido = true;
-
-        if(strlen($this->__get('Senha')) < 9){
-            header('Location: cadastro?cadastro=error2');
-        }
-
-        return $valido;
-    }
-
-    /*recuperar um usuário por email*/
-
-    public function getUsuarioPorEmail(){
-        $query = "select Nome, Email from usuarios where email = :Email";
+    public function salvar_item_estoque() {
+        $query = "insert into estoque(ProdutoID, Quantidade, DataPlantio, Ramo_principal, Produto_principal, UserID)values(:ProdutoID, :Quantidade, :Data_plantio, :Ramo, :Produto, :UserID)";
         $stmt = $this->db->prepare($query);
-        $stmt->bindValue(':Email', $this->__get('Email'));
-        $stmt->execute();
-
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    }
-
-    public function valida_login(){
-
-        $query = "
-        select 
-            UserID, Nome, Email from usuarios 
-        where 
-            email = :Email and Senha = :Senha";
-
-            
-        $stmt = $this->db->prepare($query);
-        $stmt->bindValue(':Email', $this->__get('Email'));
-        $stmt->bindValue(':Senha', $this->__get('Senha'));
-        $stmt->execute();
-
-        $usuario = $stmt->fetch(\PDO::FETCH_ASSOC);
-
-        if($usuario['UserID'] != '' && $usuario['Nome'] != '' ){
-            $this->__set('UserID', $usuario['UserID']);
-            $this->__set('Nome', $usuario['Nome']);
-        }
-
-        return $this;
-    }
-
-    public function seleciona_lgn_lat(){
-
-        $query = "select lat, lng from enderecos where UserID = :UserID";
-        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':ProdutoID', $this->__get('ProdutoID'));
+        $stmt->bindValue(':Quantidade', $this->__get('Quantidade'));
+        $stmt->bindValue(':Data_plantio', $this->__get('Data_plantio'));
+        $stmt->bindValue(':Ramo', $this->__get('Ramo'));
+        $stmt->bindValue(':Produto', $this->__get('Produto'));
         $stmt->bindValue(':UserID', $this->__get('UserID'));
-
         $stmt->execute();
+        return $this;
+    
 
-        $geocalizacao = $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
 
-        if($geocalizacao['lat'] != '' && $geocalizacao['lng'] != ''){
-            $this->__set('lat', $geocalizacao['lat']);
-            $this->__set('lng', $geocalizacao['lng']);
-        }
+    public function editar_item_estoque(){
 
+        $query ="UPDATE estoque
+        SET 
+            Quantidade = :Quantidade,
+            DataPlantio = :DataPlantio,
+            Ramo_principal = :Ramo,
+            Produto_principal = :Produto
+        WHERE EstoqueID = :EstoqueID AND UserID = :UserID";
+
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':EstoqueID', $this->__get('EstoqueID'));
+        $stmt->bindValue(':Quantidade', $this->__get('Quantidade'));
+        $stmt->bindValue(':DataPlantio', $this->__get('Data_plantio'));
+        $stmt->bindValue(':Ramo', $this->__get('Ramo'));
+        $stmt->bindValue(':Produto', $this->__get('Produto'));
+        $stmt->bindValue(':UserID', $this->__get('UserID'));
+        $stmt->execute();
         return $this;
     }
 
@@ -154,6 +113,22 @@ class valida_cadastro extends Model {
         return $this;
     }
 
+    public function oculta_item(){
+
+        $query = "select ProdutoID from estoque where UserID = :UserID";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':UserID', $this->__get('UserID'));
+
+        $stmt->execute();
+
+        $itens = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+        $this->__set('produtoID_itens', $itens);
+
+
+        return $this;
+    }
+
     public function seleciona_itens_estoque(){
 
         $query = "select EstoqueID, ProdutoID, Quantidade, DataPlantio, Ramo_principal, Produto_principal from estoque where UserID = :UserID";
@@ -169,6 +144,27 @@ class valida_cadastro extends Model {
         return $this;
     }
 
+    public function excluir(){
+
+        $query = "delete from produtos where ProdutoID = :ProdutoID";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':ProdutoID', $this->__get('ProdutoID'));
+
+        $stmt->execute();
+
+        return $this;
+    }
+
+    public function excluir_estoque(){
+
+        $query = "delete from estoque where EstoqueID = :EstoqueID";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindValue(':EstoqueID', $this->__get('EstoqueID'));
+
+        $stmt->execute();
+
+        return $this;
+    }
 
     public function seleciona_vendedores() {
         // Consulta unificada para obter dados de estoque, usuários e imagem do produto
@@ -197,42 +193,6 @@ class valida_cadastro extends Model {
         
         return $this;
     }
-    
-    
-    
 
-
-    public function valida_cadastro(){
-
-        $query = "SELECT UserID FROM usuarios WHERE Email = :Email";
-        $stmt = $this->db->prepare($query);
-        $stmt->bindValue(':Email', $this->__get('Email'));
-        $stmt->execute();
-        
-        $result = $stmt->fetch(\PDO::FETCH_ASSOC);
-        if ($result) {
-            return $result['UserID'];
-        } else {
-            return null; 
-        }
-    }
-
-    public function oculta_item(){
-
-        $query = "select ProdutoID from estoque where UserID = :UserID";
-        $stmt = $this->db->prepare($query);
-        $stmt->bindValue(':UserID', $this->__get('UserID'));
-
-        $stmt->execute();
-
-        $itens = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-
-        $this->__set('produtoID_itens', $itens);
-
-
-        return $this;
-    }
 
 }
-
-?>

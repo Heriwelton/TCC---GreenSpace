@@ -1,0 +1,47 @@
+
+
+[
+    {
+        "nome": "Laranja lima",
+        "imagem": "../img/laranja.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar laranja lima, selecione um local ensolarado com solo bem drenado, plante as mudas espaçadas a uma distância de cerca de 4 a 6 metros, garantindo uma boa profundidade de plantio, mantendo o solo úmido, mas não encharcado.",
+        "temp_recomendavel": "15,35",
+        "tempo_colheita": "20 meses, +20 months",
+        "tempo_regar": "1 semana"
+    
+    },
+    {
+        "nome": "Laranja da terra",
+        "imagem": "../img/laranja.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar laranja da terra, selecione um local ensolarado com solo bem drenado, plante as mudas espaçadas a uma distância de cerca de 4 a 6 metros, garantindo uma boa profundidade de plantio, mantendo o solo úmido, mas não encharcado.",
+        "temp_recomendavel": "15,35",
+        "tempo_colheita": "20 meses, +20 months",
+        "tempo_regar": "1 semana"
+        
+    },
+    {
+        "nome": "Laranja Hamlin",
+        "imagem": "../img/laranja.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar laranja Hamlin, selecione um local ensolarado com solo bem drenado, plante as mudas espaçadas a uma distância de cerca de 4 a 6 metros, garantindo uma boa profundidade de plantio, mantendo o solo úmido, mas não encharcado.",
+        "temp_recomendavel": "15,35",
+        "tempo_colheita": "20 meses, +20 months",
+        "tempo_regar": "1 semana"
+        
+    },
+    {
+        "nome": "Laranja natal",
+        "imagem": "../img/laranja.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar laranja natal, selecione um local ensolarado com solo bem drenado, plante as mudas espaçadas a uma distância de cerca de 4 a 6 metros, garantindo uma boa profundidade de plantio, mantendo o solo úmido, mas não encharcado.",
+        "temp_recomendavel": "15,35",
+        "tempo_colheita": "20 meses, +20 months",
+        "tempo_regar": "1 semana"
+        
+    }
+
+
+
+]

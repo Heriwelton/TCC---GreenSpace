@@ -1,0 +1,27 @@
+
+
+[
+    {
+        "nome": "Carambola doce",
+        "imagem": "../img/carambola.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar carambola doce, escolha um local ensolarado com solo bem drenado, mantenha as mudas espaçadas e regue regularmente durante o primeiro ano para um estabelecimento eficaz das raízes.",
+        "temp_recomendavel": "15,35",
+        "tempo_colheita": "18 meses, +18 months",
+        "tempo_regar": "1 semana"
+    
+    },
+    {
+        "nome": "Carambola ácida",
+        "imagem": "../img/carambola.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar carambola doce, escolha um local ensolarado com solo bem drenado, mantenha as mudas espaçadas e regue regularmente durante o primeiro ano para um estabelecimento eficaz das raízes.",
+        "temp_recomendavel": "15,35",
+        "tempo_colheita": "18 meses, +18 months",
+        "tempo_regar": "1 semana"
+        
+    }
+
+
+
+]

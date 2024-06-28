@@ -1,0 +1,27 @@
+
+
+[
+    {
+        "nome": "Acerola Cabocla",
+        "imagem": "../img/acerola.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar acerola Cabocla, escolha um local ensolarado com solo bem drenado, plante mudas espaçadas a 3 metros de distância, regando regularmente e fornecendo cobertura morta para conservar a umidade.",
+        "temp_recomendavel": "15,35",
+        "tempo_colheita": "24 meses, +24 months",
+        "tempo_regar": "1 semana"
+    
+    },
+    {
+        "nome": "Acerola Rubra",
+        "imagem": "../img/acerola.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar acerola Rubra, selecione um local ensolarado com solo bem drenado, espaçando as mudas a 3 metros de distância, regando regularmente e fornecendo cobertura morta para retenção de umidade.",
+        "temp_recomendavel": "15,35",
+        "tempo_colheita": "18 meses, +18 months",
+        "tempo_regar": "1 semana"
+        
+    }
+
+
+
+]

@@ -1,136 +1,134 @@
 /*Formatações gerais */ 
-body{
-  background-color: rgb(245,245,245);
-
-}
-.container {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-}
-
-.align-span{
-  margin-right: 20%;
-}
-
-/*customização de botões*/
-
-.navbar-dark .navbar-nav .nav-link.disabled {
-  color: #fff;
-}
-
-
-
-/*tratamento de erros*/
-.exception p{
-  color: red;
-}
-
-.form-control-error::placeholder {
-  color:  #7a7e80;
-}
-
-.form-control-error{
-  display: block;
-  width: 100%;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #fcb4c4;
-  background-clip: padding-box;
-  border: 1px solid red;
-  border-radius: 0.25rem;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  
-}
-
-/*login/cadastro*/ 
-.card-header{
-  background-color: #fff;
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 1.3em;
-  font-weight: bold;
-}
-
-.create-account a{
-  color: #17a2b8;
-}
-
-.custom-btn {
-  height: 70px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-
-}
-.custom-btn a{
-  border: 1px solid #17a2b8;
-  color: #17a2b8;
-  padding: 10px;
-  background-color: transparent;
-  margin: 0px 10px;
-  width: 100%;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 0.25em;
-
-      
-}
-
-.custom-btn a:hover{
-  border: 1px solid #fff;
-  color: #fff;
-  padding: 10px;
-  background-color: #17a2b8;
-  margin: 0px 10px;
-  width: 100%;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 0.25em;
-
-      
-}
-
-.custom-btn .selected {
-  border: 1px solid #fff;
-  color: #fff;
-  padding: 10px;
-  background-color: #17a2b8;
-  margin: 0px 10px;
-  width: 100%;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 0.25em;
-}
-
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-  /*container de login/cadastro*/ 
-  .card-login {
-    padding: 30% 0 0 0;
-    width: 300px;
+  body{
+    background-color: rgb(245,245,245);
 
   }
-
-  .msg-recepcao{
-    border: 1px solid;
+  .container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
   }
 
-  /*menu de navegação*/
+  .align-span{
+    margin-right: 20%;
+  }
+
+  ::-webkit-scrollbar{
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb{
+    width: 10px;
+    background-color: #ed9121;
+  }
+
+  /*customização de botões*/
+
+  .navbar-dark .navbar-nav .nav-link.disabled {
+    color: #fff;
+  }
 
 
 
-}
+  /*tratamento de erros*/
+  .exception p{
+    color: red;
+  }
 
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
+  .form-control-error::placeholder {
+    color:  #7a7e80;
+  }
+
+  .form-control-error{
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fcb4c4;
+    background-clip: padding-box;
+    border: 1px solid red;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    
+  }
+
+  /*login/cadastro*/ 
+  .card-header{
+    background-color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.3em;
+    font-weight: bold;
+  }
+
+  .create-account a{
+    color: #17a2b8;
+  }
+
+  .custom-btn {
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+  }
+  .custom-btn a{
+    border: 1px solid #17a2b8;
+    color: #17a2b8;
+    padding: 10px;
+    background-color: transparent;
+    margin: 0px 10px;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.25em;
+
+        
+  }
+
+  .card{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  }
+
+  .custom-btn a:hover{
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 10px;
+    background-color: #17a2b8;
+    margin: 0px 10px;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.25em;
+
+        
+  }
+
+  .custom-btn .selected {
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 10px;
+    background-color: #17a2b8;
+    margin: 0px 10px;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.25em;
+  }
+
+
+  a.dropdown-item:hover{
+    background-color: #ed9121;
+  }
+
+
   /*container de login/cadastro*/ 
     .card-login {
       padding: 30% 0 0 0;
-      width: 400px;
+      width: 700px;
 
     }
 
@@ -156,57 +154,580 @@ body{
       color: #fff;
     }
 
+    .clima-custom{
+      text-shadow: 2px 2px 2px black;
+    }
 
 
     #corpo-modulo-meu-jardim{
       height: 100vh;
-      background-color: #00BF63;
+      background-color: #bdecb6;
   
   }
 
+  #corpo-modulo-meu-comercio{
+    height: 100vh;
+    background-color: #5582be;
+
+}
+
+#corpo-modulo-comunidade{
+  height: 100vh;
+  background-color: #ed9121;
+
+}
+
   nav.navbar-custom {
-    background: #0477405b;
+    background: rgba(0, 0, 0, 0.603);
 
     border-bottom: 2px solid;
   }
 
   .container-custom{
-
-    height: 92vh;
     padding: 15px;
   }
 
   /* carousel modulo meu jardim */
+
+  span.carousel-control-prev-icon, span.carousel-control-next-icon {
+    display: flex;
+    background-color: #00BF63;
+    border: 1px solid;
+    padding: 20%;
+  }
+
   .carousel-custom{
-    border: 5px solid;
+    border: 2px solid;
+    justify-content: center;
+    height: 90%;
 
   }
+  .carousel-img{
+    border:1px solid;
+    height: 350px;
+  }
+
+  .dica-align-container{
+    margin-top: 5%;
+    font-size: 1.5em  ;
+  }
+
+  
 
   .container-carousel{
     border: 1px solid;
+    margin: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+    max-height: 70vh;
+    min-height: 70vh;
+    background-color: rgb(245,245,245);
+    
+  }
+
+  .btn-cadastro{
+    width: 50%;
+    border: 1px solid black;
+    margin:  0px auto;
+    display: flex;
+    justify-content: center; 
+
+  }
+
+  .carousel-justify{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin: 20px; 
+  }
+
+  .carousel-item-title {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+
+  }
+  
+
+  .carousel-justify img {
+    margin: auto; 
     
   }
 
   .carousel-title{
     text-align: center;
+    padding-top: 2%;
+
   }
 
+  .carousel-title-branco{
+    text-align: center;
+    padding-top: 2%;
+    color: #fff;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 2px black;
+
+    
+  }
+
+  .card-carousel-desc{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+  }
+
+  .card-carousel-button{
+    display: flex;
+    justify-content: right; 
+    align-items: center;
+  }
+  .carousel-control-next {
+    margin-top: 5%;
+    
+    
+  }
+
+  .icone_excluir{
+    padding: 5px;
+    height: 30px;
+    width: 32px;
+  }
+
+  .btn-add-estoque{
+    border: 1px solid black;
+    background-color: #ffa500;
+    font-weight: bold;
+  }
+
+  .btn-add-estoque:hover{
+    color: white;
+    background-color: #ffa500;
+    font-weight: bold;
+  }
+
+  .btn-add-estoque-invalido{
+    border: 1px solid black;
+    background-color: #d3d3d3;
+    font-weight: bold;
+  }
+
+  .card-carousel-button-estoque{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    
+  }
+  /* mensagem caso carousel esteja vazio*/
+  .img-custom{
+    margin-top: 3%;
+    margin-bottom: 3%;
+    height: 200px;
+  }
+
+  .empty-carousel{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  .align-empty-carousel{
+    margin: 5%;
+  }
+
+  /*Nova plantação*/
+
+  .btn-nova-plantacao{
+    width: 75%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.8em;
+    background-color: transparent;
+
+  }
+
+  a.btn.btn-nova-plantacao{
+    color: black;
+
+  } 
+  a.btn.btn-nova-plantacao:hover{
+    color: white;
+
+  }
+
+  .container-nova-plantacao{
+    margin-left: 15px;
+    margin: 5px;
+    text-align: center;
+  }
+
+  .container-tipos-plantas{
+    border: 1px solid ;
+    margin: 5px;
+    min-height: 70vh;
+    text-align: center;
+    max-height: 70vh;
+    overflow-y: scroll;
+    background-color: rgb(245,245,245);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+    
+  }
+
+  /*Cards*/
+
+  div.card-group.container_flores{
+    padding-left: 4%;
+
+    width: 95%;
+    justify-items: center;
+  }
+
+ .card-group-categorias{
+  justify-content: space-around;
+  margin: 3%;
+ }
+
+  div.card.col-3{
+    min-height: 20vw;
+    margin-top: 4%;
+
+    
+    
+  }
+
+  a.btn-card{
+    display: inline-block;
+    border: 1px solid;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 7px;
+    width: 50%;
+    color: black;
+    border: 1px solid black;
+    background-color: rgb(245,245,245);
+    border-radius: 0.25em;
+    
+    
+  }
+
+  a.btn-card:hover{
+    background-color: #ed9121;
+    
+    
+  }
+
+  img.card-img-top{
+    margin-top: 5%;
+    border: 1px solid;
+    max-height: 250px;
+
+  }
+
+  /* categoria flores */
+  .container_flores{
+    display: flex;
+    flex-wrap: wrap;
+
+    
+    
+  }
+
+  .card_flores{
+    border: 1px solid;
+    padding: 10px;
+    text-align: center;
+    width: 350px;
+    box-sizing: border-box;
+    margin: 5%;
+    background-color: #bdecb6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+    
+    
+  }
+
+  .card_flores img {
+    max-width: 80%;
+  }
+
+
+
+
+/*Módulo meu estoque*/
+
+.form-estoque{
+  border: 1px solid black;
+  padding: 20px;
+  justify-content: center;
+  margin: 5% 0%;
 }
 
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
+.table-custom{
+  border: 1px solid black;
+}
+
+
+/*Módulo vendedores*/
+
+.card-vendedores{
+  border: 1px solid;
+  padding: 10px;
+  text-align: center;
+  width: 350px;
+  box-sizing: border-box;
+  margin: 5%;
+  background-color: #5582be;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  justify-content: center;
+  
+}
+
+.h2-card-vendedores{
+  padding: 10px 0px;
+}
+
+.btn-comprar{
+  padding: 5px 20px;
+  text-transform: uppercase;
+  border: 2px solid black;
+  border-radius: 0.25em;
+  background-color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+.btn-comprar:hover{
+  background-color: #ffa500;
+  padding: 5px 20px;
+  text-transform: uppercase;
+}
+
+.img-card-vendedores{
+  max-width: 80%;
+}
+
+
+
+.container-app {
+  border: 1px solid;
+  margin: 5px;
+  max-height: 70vh;
+  min-height: 70vh;
+  background-color: rgba(245, 245, 245);
+  overflow-y: scroll;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  border-radius: 0.25em;
+}
+
+
+.postagem-container{
+  width: 90%;
+  height: 100%;
 
 }
 
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
+.postagem{
+  border: 1px solid black;
+  margin: 20px 0px;
+  padding: 10px;
+  background-color: rgb(216, 209, 209);
+  border-radius: 0.25em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+}
 
+.btn-comentario{
+  border: 1px solid black;
+  margin: 5px 0px;
+  font-weight: bold;
   
 }
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
+.btn-postagem{
+  border: 1px solid black;
+  margin: 5px 0px;
+  font-weight: bold;
+  width: 4%;
   
+}
+
+.postagem-title{
+
+  margin-top: 10px;
+}
+
+.radio-postagem{
+
+  margin: 15px 0px ;
+}
+
+.btn-postagem:hover{
+  background-color: #ffa500;
+  border: 1px solid black;
+  margin: 5px 0px;
+  font-weight: bold;
+  width: 4%;
   
+}
+
+.btn-comentario:hover{
+  border: 1px solid black;
+  background-color: #ffa500;
+  margin: 5px 0px;
   
+}
+
+.p-resposta{
+  border-top: 1px solid black;
+  padding-top: 2%;
+  font-size: 1.2em;
+}
+
+.align-postagem{
+  display: inline-block;
+  text-align: right;
+  
+}
+.postagem p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.align-postagem {
+  margin-left: auto; /* Isso empurra o span para a direita */
+}
+
+.textarea-resposta{
+  border: 1px solid black;
+}
+
+
+.temp-max-title{
+  color: red;
+  text-shadow: 1px 1px 1px black;
+}
+.temp-min-title{
+  color: cyan;
+  text-shadow: 1px 1px 1px black;
+}
+.scrool{
+  overflow-y: scroll;
+}
+
+.dica-comunidade-titulo{
+  margin-top: 5%;
+}
+
+.btn-voltar{
+  display: inline-block;
+  border: 1px solid;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin: 15px 0px;
+  padding: 7px;
+  width: 10%;
+  color: black;
+  border: 1px solid black;
+  background-color: rgb(245,245,245);
+  border-radius: 0.25em;
+  text-align: center;
+
+}
+
+a.btn-voltar:hover{
+  background-color: #ed9121;
+  text-decoration: none;
+  color: white;
+  
+}
+
+button{
+  all: unset;
+  cursor: pointer;
+}
+
+
+form{
+display: inline;
+}
+
+/*formatações index*/
+.caixa1 {
+  background-image: url(../img/jardim-verde-pastel.jpg);
+}
+
+.caixa2{
+  background-image: url(../img/jardim-cesta-alimentos.jpg);
+}
+
+
+.caixa1, .caixa2{
+  position: relative;
+  height: 70%;
+  opacity:0.8;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.conteudo-titulo-index {
+  position: absolute;
+  left: 0%;
+  top: 15%;
+  width: 100%;
+  text-align: center;
+  
+}
+
+.conteudo-index {
+  color: #777;
+  background-color: white;
+  text-align: justify;
+  padding: 50px 80px;
+}
+
+.img-logo{
+  display: flex;
+  height: 300px;
+  justify-content: center;
+  padding-top: 20px;
+
+}
+
+.text-index{
+  font-size: 1.5em;
+  color: black;
+}
+
+.conteudo-titulo-index a.titulo-index {
+  color: #fff;
+  background-color: #111;
+  padding: 18px;
+  font-size: 3em;
+  letter-spacing: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+a.titulo-index:hover{
+  color: #ed9121;
+  text-decoration: none;
+ 
+}
+
+.title-index{
+  color: black;
+  margin-bottom: 20px;
+
+}
+
+.fundo-login{
+  background-image: url(../img/jardim-verde-pastel.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.btn-redirec{
+  width: 50%;
 }

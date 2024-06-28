@@ -1,0 +1,47 @@
+
+
+[
+    {
+        "nome": "Limão siciliano",
+        "imagem": "../img/limao.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar limão siciliano, escolha um local ensolarado com solo bem drenado, mantenha o solo úmido e plante as mudas espaçadas a 4-6 metros de distância.",
+        "temp_recomendavel": "15,35",
+        "tempo_colheita": "24 meses, +24 months",
+        "tempo_regar": "1 semana"
+    
+    },
+    {
+        "nome": "Limão taiti",
+        "imagem": "../img/limao.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar limão Taiti, escolha um local ensolarado com solo bem drenado, mantenha o solo úmido e plante as mudas espaçadas a 4-6 metros de distância.",
+        "temp_recomendavel": "15,35",
+        "tempo_colheita": "24 meses, +24 months",
+        "tempo_regar": "1 semana"
+        
+    },
+    {
+        "nome": "Limão galego",
+        "imagem": "../img/limao.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar limão galego, escolha um local ensolarado com solo bem drenado, mantenha o solo úmido e plante as mudas espaçadas a 4-6 metros de distância.",
+        "temp_recomendavel": "15,35",
+        "tempo_colheita": "24 meses, +24 months",
+        "tempo_regar": "1 semana"
+        
+    },
+    {
+        "nome": "Limão caipira",
+        "imagem": "../img/limao.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar limão caipira, escolha um local ensolarado com solo bem drenado, mantenha o solo úmido e plante as mudas espaçadas a 4-6 metros de distância.",
+        "temp_recomendavel": "15,35",
+        "tempo_colheita": "24 meses, +24 months",
+        "tempo_regar": "1 semana"
+        
+    }
+
+
+
+]

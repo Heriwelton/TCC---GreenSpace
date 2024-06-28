@@ -1,0 +1,45 @@
+
+
+[
+    {
+        "nome": "Abóbora moranga",
+        "imagem": "../img/abobora.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar abóbora moranga, selecione um local ensolarado com solo rico em nutrientes e bem drenado, mantendo uma distância adequada entre as plantas para permitir o desenvolvimento saudável das videiras",
+        "temp_recomendavel": "18,30",
+        "tempo_colheita": "4 meses, +4 months",
+        "tempo_regar": "4 dias"
+    
+    },
+    {
+        "nome": "Abóbora Mogango",
+        "imagem": "../img/abobora.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar abóbora Mogango, selecione um local ensolarado com solo rico em nutrientes e bem drenado, mantendo uma distância adequada entre as plantas para permitir o desenvolvimento saudável das videiras",
+        "temp_recomendavel": "18,30",
+        "tempo_colheita": "4 meses, +4 months",
+        "tempo_regar": "4 dias"
+        
+    },
+    {
+        "nome": "Abóbora Caravela",
+        "imagem": "../img/abobora.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar abóbora Caravela, selecione um local ensolarado com solo rico em nutrientes e bem drenado, mantendo uma distância adequada entre as plantas para permitir o desenvolvimento saudável das videiras",
+        "temp_recomendavel": "18,30",
+        "tempo_colheita": "4 meses, +4 months",
+        "tempo_regar": "4 dias"
+    },
+    {
+        "nome": "Abóbora Rajada",
+        "imagem": "../img/abobora.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar abóbora Rajada, selecione um local ensolarado com solo rico em nutrientes e bem drenado, mantendo uma distância adequada entre as plantas para permitir o desenvolvimento saudável das videiras",
+        "temp_recomendavel": "18,30",
+        "tempo_colheita": "4 meses, +4 months",
+        "tempo_regar": "4 dias"
+    }
+
+
+
+]

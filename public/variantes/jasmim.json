@@ -1,0 +1,45 @@
+
+
+[
+    {
+        "nome": "Jasmim manga",
+        "imagem": "../img/jasmim.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar jasmim-manga, escolha um local ensolarado e bem drenado, plante as mudas ou estacas no início da primavera, regando regularmente durante o crescimento ativo e aplicando adubo orgânico para promover uma floração saudável.",
+        "temp_recomendavel": "18,35",
+        "tempo_colheita": "5 meses, +5 months",
+        "tempo_regar": "4 dias"
+    
+    },
+    {
+        "nome": "Jasmim estrela",
+        "imagem": "../img/jasmim.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar jasmim-estrela, selecione um local com sol pleno ou sombra parcial, plante as mudas na primavera ou no outono, garantindo solo bem drenado, forneça suporte se necessário para as videiras trepadeiras crescerem.",
+        "temp_recomendavel": "15,30",
+        "tempo_colheita": "4 meses, +4 months",
+        "tempo_regar": "4 dias"
+        
+    },
+    {
+        "nome": "Jasmim do Cabo",
+        "imagem": "../img/jasmim.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar jasmim-do-cabo, escolha um local ensolarado com solo bem drenado, plante as mudas na primavera ou no outono, fornecendo uma camada de cobertura morta ao redor das plantas para ajudar a reter a umidade do solo.",
+        "temp_recomendavel": "15,30",
+        "tempo_colheita": "4 meses, +4 months",
+        "tempo_regar": "4 dias"
+    },
+    {
+        "nome": "jasmim dos açores",
+        "imagem": "../img/jasmim.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar jasmim-dos-açores, escolha um local com sol pleno ou sombra parcial, plante as mudas na primavera ou no outono, garantindo solo bem drenado, forneça proteção contra geadas, se necessário.",
+        "temp_recomendavel": "10,25",
+        "tempo_colheita": "4 meses, +4 months",
+        "tempo_regar": "4 dias"
+    }
+
+
+
+]

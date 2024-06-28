@@ -1,16 +1,99 @@
+<?php
+
+$title1 = "<h2>Como iniciar sua plantação</h2>";
+
+$title2 = "<h2 class='dica-comunidade-titulo'>Dica da comunidade</h2>";
+
+$dica_temp_minima = "<strong class='temp-min-title'>Alerta de Temperatura Mínima!!</strong> </br></br>
+
+Sua plantação caiu abaixo da temperatura mínima recomendada e está vulnerável. </br></br>
+
+Dicas para mantê-la segura: </br></br>
+
+Utilize lonas, mantas térmicas ou tecidos agrícolas para cobrir suas plantas durante a noite ou períodos de frio intenso. Isso ajuda a reter o calor e protege as plantas do gelo e da geada. </br></br>
+
+Coloque quebra-ventos, como cercas ou barreiras naturais para reduzir o impacto dos ventos frios sobre suas plantas. </br></br>
+
+Aplique uma camada de cobertura morta ao redor das plantas. Materiais como palha, folhas secas ou casca de árvores ajudam a isolar o solo e manter a temperatura mais estável. </br></br>
+
+Se possível, use aquecedores de estufa ou lâmpadas de calor para elevar a temperatura ao redor das plantas. Em casos de emergência, lâmpadas incandescentes podem ser usadas para gerar calor em pequenas áreas. </br></br>
+
+Tomar essas medidas rapidamente pode ajudar a proteger sua plantação dos danos causados pelo frio excessivo e garantir que suas plantas permaneçam saudáveis e produtivas.";
+
+
+
+$dica_temp_maxima = "<strong class='temp-max-title'>Alerta de Temperatura Máxima!!</strong> </br> </br>
+
+Sua plantação ultrapassou a temperatura máxima recomendada e está vulnerável. </br> </br> 
+
+Dicas para mantê-la segura: </br> </br>
+
+Instale telas de sombreamento ou utilize panos agrícolas para proteger suas plantas do sol direto. Reduzir a exposição solar pode ajudar a baixar a temperatura ao redor das plantas. </br></br>
+
+Coloque uma camada de cobertura morta ao redor das plantas. Materiais como palha, folhas secas ou casca de árvores ajudam a manter a umidade do solo e a reduzir sua temperatura. </br></br>
+
+Tomar essas medidas rapidamente pode ajudar a proteger sua plantação dos danos causados pelo calor excessivo e garantir que suas plantas permaneçam saudáveis e produtivas." ;
+?>
 <html>
   <head>
     <meta charset="utf-8" />
     <title>Login - menu inicial</title>
   </head>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+    var carousel = document.querySelector('#carousel-controles');
+    var dicaContainer = document.getElementById('dica-container');
 
+    function updateDica() {
+        var activeItem = carousel.querySelector('.carousel-item.active');
+        if (activeItem) {     
+            var dica = activeItem.getAttribute('data-dica');
+            dicaContainer.innerHTML = '<p>' + dica + '</p>';
+        }
+    }
+
+    updateDica();
+
+    $('#carousel-controles').on('slid.bs.carousel', updateDica);
+    });
+
+
+  document.addEventListener('DOMContentLoaded', function() {
+          var deleteButtons = document.querySelectorAll('.botaoExcluir');
+
+          deleteButtons.forEach(function(button) {
+              button.addEventListener('click', function(event) {
+                  var form = event.target.closest('form');
+                  var confirmed = confirm('Tem certeza de que deseja excluir este item?');
+                  if (!confirmed) {
+                      event.preventDefault(); 
+                  }
+              });
+          });
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+          var buttonStock = document.querySelectorAll('.btn-add-estoque');
+
+          buttonStock.forEach(function(buttonStock) {
+            buttonStock.addEventListener('click', function(event) {
+                  var form = event.target.closest('form');
+                  var confirmed = confirm('Sua plantação está pronta! ao adicionar ao estoque, você ficará visivel como vendedor para outros usuarios');
+                  if (!confirmed) {
+                      event.preventDefault(); 
+                  }
+              });
+          });
+  });
+ 
+</script>
   <body>
     <div id="corpo-modulo-meu-jardim">
 
       <nav class="navbar navbar-expand-sm navbar-dark navbar-custom">
           <!--Logo-->
-          <div class="navbar-brand">
-            <span class="align-span"><?php echo $_SESSION["cidade"]  ?></span><span><?php echo $_SESSION["temperatura"]  ?>ºC</span> <img src="https://openweathermap.org/img/wn/<?php echo $_SESSION["icone"] ?>.png" alt='Weather Icon'> <span class="align-span"><?php echo $_SESSION["clima"] ?></span>
+          <div class="navbar-brand clima-custom">
+            <?php echo $_SESSION["cidade"] ?><span class="align-span"></span><span><?php echo $_SESSION["temperatura"]  ?>ºC</span> <img src="https://openweathermap.org/img/wn/<?php echo $_SESSION["icone"] ?>.png" alt='Weather Icon'> <span class="align-span"><?php echo $_SESSION["clima"] ?></span>
           </div>
 
           <!-- Menu Hamburguer -->
@@ -38,8 +121,9 @@
                 <li class="nav-item dropdown">
                   <a href="" class="nav-link msg-recepcao dropdown-toggle" data-toggle="dropdown">Meu Jardim</a>
                   <div class="dropdown-menu">
-                    <a href="" class="dropdown-item">Serviço 1</a>
-                    <a href="" class="dropdown-item">Serviço 2</a>
+                    <a href="/modulo_meu_comercio?user_stock" class="dropdown-item">Meu Comércio</a>
+                    <a href="/modulo_comunidade" class="dropdown-item">Comunidade</a>
+                    <a href="/modulo_vendedores" class="dropdown-item">Vendedores</a>
                     <a href="/sair" class="dropdown-item">Sair</a>
                   </div>
 
@@ -51,31 +135,1792 @@
         
         </nav>
           <div class="container-custom">
-            <div class="row">
+          <?php if(empty($_GET)) { ?>    
+
+          <div class="row justify-content-center">
+            <div class="col-5"><h1 class ="carousel-title">Suas plantações ativas</h1></div>
+            <div class="col-5"><h1 class ="carousel-title">Cuidados para sua planta</h1></div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-5 container-carousel">
+              <div class="align-empty-carousel">        
+
+                <div id="carousel-controles" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
+                  <?php
+                    if (isset($_SESSION['itens']) && !empty($_SESSION['itens'])) {
+                        $isActive = true;
+                        foreach ($_SESSION['itens'] as $index => $item) {
+                            // formatando graus
+                            $temp_recomendavel = $item['Temp_recomendavel'];
+                            $temp_array = explode(',', $temp_recomendavel);
+
+                            $temp_minima = $temp_array[0]; 
+                            $temp_maxima = $temp_array[1];
+
+                            // formatando a colheita
+                            $tempo_colheita = $item['Tempo_colheita'];
+                            $tempo_colheita_array = explode(',', $tempo_colheita);
+
+                            $tempo_colheita_visivel = $tempo_colheita_array[0];
+                            $tempo_colheita_api = $tempo_colheita_array[1];
+                            $data_inicial = $tempo_colheita_array[2];
+                            $data_finalizacao = $tempo_colheita_array[3];
+
+                            $data_formatada = $tempo_colheita_visivel . " (" . $data_finalizacao . ")";
+
+                            ?>
+                            <div class="carousel-item carousel-custom <?php echo $isActive ? 'active' : ''; ?>" data-dica="<?php echo ($_SESSION["temperatura"] < $temp_minima) ? htmlspecialchars($dica_temp_minima) : (($_SESSION["temperatura"] > $temp_maxima) ? htmlspecialchars($dica_temp_maxima) : htmlspecialchars($title1 . $item['Dica'] . $title2 . $item['Dica_forum'])); ?>">
+                                <div class="card-carousel-button">
+                                    <form id="excluirForm<?php echo $item['ProdutoID']; ?>" action="/excluir_item" method="POST">
+                                        <input type="hidden" name="ProdutoID" value="<?php echo htmlspecialchars($item['ProdutoID']); ?>">
+                                        <button type="submit" class="botaoExcluir">
+                                            <img class="icone_excluir" src="../img/Deletar_item.png" alt="Excluir">
+                                        </button>
+                                    </form>
+                                </div>
+                                <h1 class="carousel-item-title"><?php echo htmlspecialchars($item['NomeProduto']); ?></h1>   
+                                <div class="carousel-justify">                                
+                                    <img class="carousel-img" src="<?php echo htmlspecialchars($item['Imagem']); ?>" class="img-fluid">
+                                </div>
+                                
+                                <div class="card-carousel-desc">
+                                    <h5>Data de plantio: <?php echo htmlspecialchars($data_inicial); ?></h5>
+                                </div>
+                                <div class="card-carousel-desc">
+                                    <h5>Tempo estimado de colheita: <?php echo htmlspecialchars($data_formatada); ?></h5>
+                                </div>
+                                <div class="card-carousel-desc">
+                                    <h5>Regar a cada: <?php echo htmlspecialchars($item['Tempo_regar']); ?></h5>
+                                </div>
+                                <div class="card-carousel-desc">
+                                    <h5>Temperatura suportada: Entre <?php echo htmlspecialchars($temp_minima); ?> C° e <?php echo htmlspecialchars($temp_maxima); ?> C°</h5>
+                                </div>
+
+                                <?php 
+                                date_default_timezone_set('America/Sao_Paulo');
+                                $dataHoje = new \DateTime();
+                                $dataHoje->format('Y-m-d');
+
+                                $data_finalizacao_obj = \DateTime::createFromFormat('d/m/Y', $data_finalizacao);
+
+                                if ($dataHoje < $data_finalizacao_obj) { ?>
+                                    <div class="card-carousel-button-estoque">
+                                      <form id="formPassou<?php echo $item['ProdutoID']; ?>" action="/processar_item" method="POST">
+                                          <input type="hidden" name="ProdutoID" value="<?php echo htmlspecialchars($item['ProdutoID']); ?>">
+                                          <input type="hidden" name="NomeProduto" value="<?php echo htmlspecialchars($item['NomeProduto']); ?>">
+                                          <input type="hidden" name="DataInicial" value="<?php echo htmlspecialchars($data_inicial); ?>">
+                                          <button type="submit" class="btn btn-add-estoque">Adicionar ao estoque</button>
+                                      </form>
+                                    </div>
+                                <?php } else { ?>
+                                  <div class="card-carousel-button-estoque">
+                                    <button type="button" class="btn btn-add-estoque-invalido" onclick="exibirAlerta()">Adicionar ao estoque</button>
+
+                                  </div>
+                                  <script>
+                                    function exibirAlerta() {
+                                      alert("Previsão de amadurecimento: <?php echo $data_finalizacao?>");
+                                    }
+                                  </script>
+                                <?php } ?>
+                                
+                            </div>
+                            <?php
+                            $isActive = false;
+                        }
+                    }
+                    ?>
+         
+
+                  </div>
+
+                  <a href="#carousel-controles" class="carousel-control-prev" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                  </a>
+
+                  <a href="#carousel-controles" class="carousel-control-next" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                  </a>
+                </div>
+
+              </div> 
+            </div>
+
+            <div class="col-5 container-carousel scrool">
+              <div class ="dica-align-container" id="dica-container">
+                   
+              </div>
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-5 container-nova-plantacao">
+              <a class="btn btn-nova-plantacao" href="/nova_plantacao">Nova Plantação + </a>
+            </div>
+            <div class="col-5"></div>
+          </div>
+
+          <?php } ?>
+
+
+
+
+
+
+          <?php if(isset($_GET['empty_flow'])) { ?>        
+          
+          <div class="row justify-content-center">
+            <div class="col-5"><h1 class ="carousel-title">Suas plantações ativas</h1></div>
+            <div class="col-5"><h1 class ="carousel-title">Cuidados para sua planta</h1></div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-5 container-carousel">
+            
+              <div class="align-empty-carousel">        
+                  <h2 class ="carousel-title">Ops! Nenhuma planta encontrada !!</h2>
+                  <h2 class ="carousel-title">Para começar o seu jardim clique em "Nova plantação +"</h2>
+                  <div class ="empty-carousel">
+                    <img src="../img/vaso_vazio.png" class="img-fluid img-custom" >
+                  </div>
+                </div> 
+              </div>
+
               <div class="col-5 container-carousel">
-                  <h1 class ="carousel-title">Minhas plantações</h1>
-                    <div id="carousel-controles" class="carousel slide" data-ride="carousel"><!--Carousel -->
-                      <div class="carousel-inner"><!--Inner -->
-                        
-                        <div class="carousel-item carousel-custom active">
-                          <img src="../img/abobora.jpg" class="img-fluid">
+                <div class="align-empty-carousel">
+                  <h2 class ="carousel-title">Aqui você encontrará dicas para sua plantação!</h2>
+                  <div class ="empty-carousel">
+                    <img src="../img/lampada_dica.png" class="img-fluid img-custom" >
+                  </div>
+                </div>
+              </div>
+
+          </div>
+
+          <div class="row justify-content-center">
+              <div class="col-5 container-nova-plantacao">
+                <a class="btn btn-nova-plantacao" href="/nova_plantacao">Nova Plantação + </a>
+              </div>
+              <div class="col-5"></div>
+
+
+          </div>
+
+          <?php } ?>
+
+          
+          <?php if(isset($_GET['new_planting'])) { ?>
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Categorias</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores">
+
+                        <div class="card_flores">
+                          <img src="../img/flores.png">
+                          <h3>Flores</h3>
+                          <p class="card-text">Plantar flores é uma atividade recompensadora que traz beleza e vida ao seu jardim.</p>
+                          <a class="btn-card" href="/categoria_flores">Selecionar</a>
                         </div>
 
-                      </div><!--/Inner -->
+                        <div class="card_flores">
+                          <img src="../img/vegetais.png">
+                          <h3>Vegetais</h3>
+                          <p class="card-text">Plantar vegetais em casa é uma atividade gratificante que fornece alimentos frescos e promove a sustentabilidade.</p>
+                          <a class="btn-card" href="/categoria_vegetais">Selecionar</a>
+                        </div>
 
-                      <!-- Controles -->
-                      <a href="#carousel-controles" class="carousel-control-prev" data-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                      </a>
+                        <div class="card_flores">
+                          <img src="../img/frutas.png">
+                          <h3>Frutas</h3>
+                          <p class="card-text">Plantar frutas em casa oferece colheitas frescas e saudáveis e promove a sustentabilidade ambiental.</p>
+                          <a class="btn-card" href="/categoria_frutas">Selecionar</a>
+                        </div>
+     
+                      </div>
+                    </div>
 
-                      <a href="#carousel-controles" class="carousel-control-next" data-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                      </a>
+                  </div>
+              </div>
 
-                    </div><!--/Carousel -->
-                </div>
-            </div>
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/modulo_meu_jardim">Voltar</a>
+                  </div>   
+              </div>
+              
+          <?php } ?>  
+
+          <?php if(isset($_GET['category_flowers'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Flores</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script>
+                            function carregar() {
+                              fetch('../categorias/flores.json')
+                                .then(response => response.json())
+                                .then(flores => {
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  flores.map(flor => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = flor.imagem
+                                    img.alt = flor.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = flor.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.href = flor.rota_variante
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div>     
+
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/nova_plantacao">Voltar</a>
+                  </div>   
+              </div>
+          <?php } ?>
+
+
+          <!--Variantes-->
+
+          <?php if(isset($_GET['variante_flores_rosa'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Rosa</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script defer>
+
+                            function handleClick(rota_salvar, nome, imagem, dica, temp_recomendavel, tempo_colheita, tempo_regar) {                             
+                                window.location.href = rota_salvar + "?nome=" + encodeURIComponent(nome) + "&imagem=" + encodeURIComponent(imagem) + "&dica=" + encodeURIComponent(dica) + "&temp_recomendavel=" + encodeURIComponent(temp_recomendavel)+ "&tempo_colheita=" + encodeURIComponent(tempo_colheita) + "&tempo_regar=" + encodeURIComponent(tempo_regar);
+                            }
+
+
+
+                            function carregar() {
+                              fetch('../variantes/rosas.json')
+                                .then(response => response.json())
+                                .then(flores => {
+
+
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  flores.map(flor => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = flor.imagem
+                                    img.alt = flor.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = flor.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.addEventListener("click", function() {
+                                        handleClick(flor.rota_salvar, flor.nome, flor.imagem, flor.dica, flor.temp_recomendavel, flor.tempo_colheita, flor.tempo_regar);
+                                    });
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div>     
+
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/categoria_flores">Voltar</a>
+                  </div>   
+              </div>
+          <?php } ?>
+
+
+          <?php if(isset($_GET['variante_flores_margarida'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Margarida</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script defer>
+
+                            function handleClick(rota_salvar, nome, imagem, dica, temp_recomendavel, tempo_colheita, tempo_regar) {                             
+                                window.location.href = rota_salvar + "?nome=" + encodeURIComponent(nome) + "&imagem=" + encodeURIComponent(imagem) + "&dica=" + encodeURIComponent(dica) + "&temp_recomendavel=" + encodeURIComponent(temp_recomendavel)+ "&tempo_colheita=" + encodeURIComponent(tempo_colheita) + "&tempo_regar=" + encodeURIComponent(tempo_regar);
+                            }
+
+
+
+                            function carregar() {
+                              fetch('../variantes/margaridas.json')
+                                .then(response => response.json())
+                                .then(flores => {
+
+
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  flores.map(flor => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = flor.imagem
+                                    img.alt = flor.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = flor.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.addEventListener("click", function() {
+                                        handleClick(flor.rota_salvar, flor.nome, flor.imagem, flor.dica, flor.temp_recomendavel, flor.tempo_colheita, flor.tempo_regar);
+                                    });
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div>
+
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/categoria_flores">Voltar</a>
+                  </div>   
+              </div>
+          <?php } ?>
+
+
+          <?php if(isset($_GET['variante_flores_tulipa'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Tulipa</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script defer>
+
+                            function handleClick(rota_salvar, nome, imagem, dica, temp_recomendavel, tempo_colheita, tempo_regar) {                             
+                                window.location.href = rota_salvar + "?nome=" + encodeURIComponent(nome) + "&imagem=" + encodeURIComponent(imagem) + "&dica=" + encodeURIComponent(dica) + "&temp_recomendavel=" + encodeURIComponent(temp_recomendavel)+ "&tempo_colheita=" + encodeURIComponent(tempo_colheita) + "&tempo_regar=" + encodeURIComponent(tempo_regar);
+                            }
+
+
+
+                            function carregar() {
+                              fetch('../variantes/tulipa.json')
+                                .then(response => response.json())
+                                .then(flores => {
+
+
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  flores.map(flor => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = flor.imagem
+                                    img.alt = flor.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = flor.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.addEventListener("click", function() {
+                                        handleClick(flor.rota_salvar, flor.nome, flor.imagem, flor.dica, flor.temp_recomendavel, flor.tempo_colheita, flor.tempo_regar);
+                                    });
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div>
+              
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/categoria_flores">Voltar</a>
+                  </div>   
+              </div>
+
+          <?php } ?>
+
+
+          <?php if(isset($_GET['variante_flores_jasmim'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Jasmim</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script defer>
+
+                            function handleClick(rota_salvar, nome, imagem, dica, temp_recomendavel, tempo_colheita, tempo_regar) {                             
+                                window.location.href = rota_salvar + "?nome=" + encodeURIComponent(nome) + "&imagem=" + encodeURIComponent(imagem) + "&dica=" + encodeURIComponent(dica) + "&temp_recomendavel=" + encodeURIComponent(temp_recomendavel)+ "&tempo_colheita=" + encodeURIComponent(tempo_colheita) + "&tempo_regar=" + encodeURIComponent(tempo_regar);
+                            }
+
+
+
+                            function carregar() {
+                              fetch('../variantes/jasmim.json')
+                                .then(response => response.json())
+                                .then(flores => {
+
+
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  flores.map(flor => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = flor.imagem
+                                    img.alt = flor.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = flor.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.addEventListener("click", function() {
+                                        handleClick(flor.rota_salvar, flor.nome, flor.imagem, flor.dica, flor.temp_recomendavel, flor.tempo_colheita, flor.tempo_regar);
+                                    });
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div>  
+              
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/categoria_flores">Voltar</a>
+                  </div>   
+              </div>
+          <?php } ?>
+
+          <?php if(isset($_GET['variante_flores_lirio'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Lirio</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script defer>
+
+                            function handleClick(rota_salvar, nome, imagem, dica, temp_recomendavel, tempo_colheita, tempo_regar) {                             
+                                window.location.href = rota_salvar + "?nome=" + encodeURIComponent(nome) + "&imagem=" + encodeURIComponent(imagem) + "&dica=" + encodeURIComponent(dica) + "&temp_recomendavel=" + encodeURIComponent(temp_recomendavel)+ "&tempo_colheita=" + encodeURIComponent(tempo_colheita) + "&tempo_regar=" + encodeURIComponent(tempo_regar);
+                            }
+
+
+
+                            function carregar() {
+                              fetch('../variantes/lirio.json')
+                                .then(response => response.json())
+                                .then(flores => {
+
+
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  flores.map(flor => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = flor.imagem
+                                    img.alt = flor.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = flor.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.addEventListener("click", function() {
+                                        handleClick(flor.rota_salvar, flor.nome, flor.imagem, flor.dica, flor.temp_recomendavel, flor.tempo_colheita, flor.tempo_regar);
+                                    });
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div>     
+
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/categoria_flores">Voltar</a>
+                  </div>   
+              </div>
+          <?php } ?>
+
+          <?php if(isset($_GET['variante_flores_girassol'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Girassol</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script defer>
+
+                            function handleClick(rota_salvar, nome, imagem, dica, temp_recomendavel, tempo_colheita, tempo_regar) {                             
+                                window.location.href = rota_salvar + "?nome=" + encodeURIComponent(nome) + "&imagem=" + encodeURIComponent(imagem) + "&dica=" + encodeURIComponent(dica) + "&temp_recomendavel=" + encodeURIComponent(temp_recomendavel)+ "&tempo_colheita=" + encodeURIComponent(tempo_colheita) + "&tempo_regar=" + encodeURIComponent(tempo_regar);
+                            }
+
+
+
+                            function carregar() {
+                              fetch('../variantes/girassol.json')
+                                .then(response => response.json())
+                                .then(flores => {
+
+
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  flores.map(flor => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = flor.imagem
+                                    img.alt = flor.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = flor.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.addEventListener("click", function() {
+                                        handleClick(flor.rota_salvar, flor.nome, flor.imagem, flor.dica, flor.temp_recomendavel, flor.tempo_colheita, flor.tempo_regar);
+                                    });
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div>     
+
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/categoria_flores">Voltar</a>
+                  </div>   
+              </div>
+          <?php } ?>
+
+          <?php if(isset($_GET['variante_flores_orquidea'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Orquidea</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script defer>
+
+                            function handleClick(rota_salvar, nome, imagem, dica, temp_recomendavel, tempo_colheita, tempo_regar) {                             
+                                window.location.href = rota_salvar + "?nome=" + encodeURIComponent(nome) + "&imagem=" + encodeURIComponent(imagem) + "&dica=" + encodeURIComponent(dica) + "&temp_recomendavel=" + encodeURIComponent(temp_recomendavel)+ "&tempo_colheita=" + encodeURIComponent(tempo_colheita) + "&tempo_regar=" + encodeURIComponent(tempo_regar);
+                            }
+
+
+
+                            function carregar() {
+                              fetch('../variantes/orquidea.json')
+                                .then(response => response.json())
+                                .then(flores => {
+
+
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  flores.map(flor => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = flor.imagem
+                                    img.alt = flor.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = flor.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.addEventListener("click", function() {
+                                        handleClick(flor.rota_salvar, flor.nome, flor.imagem, flor.dica, flor.temp_recomendavel, flor.tempo_colheita, flor.tempo_regar);
+                                    });
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div>    
+              
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/categoria_flores">Voltar</a>
+                  </div>   
+              </div>
+          <?php } ?>
+
+          <!--Vegetais-->
+
+          <?php if(isset($_GET['category_vegetables'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Vegetais</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script>
+                            function carregar() {
+                              fetch('../categorias/vegetais.json')
+                                .then(response => response.json())
+                                .then(vegetais => {
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  vegetais.map(vegetal => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = vegetal.imagem
+                                    img.alt = vegetal.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = vegetal.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.href = vegetal.rota_variante
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div>     
+
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/nova_plantacao">Voltar</a>
+                  </div>   
+              </div>
+          <?php } ?>
+
+
+          <?php if(isset($_GET['variante_vegetais_berinjela'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Berinjela</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script defer>
+
+                            function handleClick(rota_salvar, nome, imagem, dica, temp_recomendavel, tempo_colheita, tempo_regar) {                             
+                                window.location.href = rota_salvar + "?nome=" + encodeURIComponent(nome) + "&imagem=" + encodeURIComponent(imagem) + "&dica=" + encodeURIComponent(dica) + "&temp_recomendavel=" + encodeURIComponent(temp_recomendavel)+ "&tempo_colheita=" + encodeURIComponent(tempo_colheita) + "&tempo_regar=" + encodeURIComponent(tempo_regar);
+                            }
+
+
+
+                            function carregar() {
+                              fetch('../variantes/berinjela.json')
+                                .then(response => response.json())
+                                .then(vegetais => {
+
+
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  vegetais.map(vegetal => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = vegetal.imagem
+                                    img.alt = vegetal.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = vegetal.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.addEventListener("click", function() {
+                                        handleClick(vegetal.rota_salvar, vegetal.nome, vegetal.imagem, vegetal.dica, vegetal.temp_recomendavel, vegetal.tempo_colheita, vegetal.tempo_regar);
+                                    });
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div> 
+              
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/categoria_vegetais">Voltar</a>
+                  </div>   
+              </div>
+
+          <?php } ?>
+
+          <?php if(isset($_GET['variante_vegetais_pepino'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Pepino</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script defer>
+
+                            function handleClick(rota_salvar, nome, imagem, dica, temp_recomendavel, tempo_colheita, tempo_regar) {                             
+                                window.location.href = rota_salvar + "?nome=" + encodeURIComponent(nome) + "&imagem=" + encodeURIComponent(imagem) + "&dica=" + encodeURIComponent(dica) + "&temp_recomendavel=" + encodeURIComponent(temp_recomendavel)+ "&tempo_colheita=" + encodeURIComponent(tempo_colheita) + "&tempo_regar=" + encodeURIComponent(tempo_regar);
+                            }
+
+
+
+                            function carregar() {
+                              fetch('../variantes/pepino.json')
+                                .then(response => response.json())
+                                .then(vegetais => {
+
+
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  vegetais.map(vegetal => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = vegetal.imagem
+                                    img.alt = vegetal.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = vegetal.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.addEventListener("click", function() {
+                                        handleClick(vegetal.rota_salvar, vegetal.nome, vegetal.imagem, vegetal.dica, vegetal.temp_recomendavel, vegetal.tempo_colheita, vegetal.tempo_regar);
+                                    });
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div>     
+
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/categoria_vegetais">Voltar</a>
+                  </div>   
+              </div>
+          <?php } ?>
+
+
+
+          <?php if(isset($_GET['variante_vegetais_abobora'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Abóbora</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script defer>
+
+                            function handleClick(rota_salvar, nome, imagem, dica, temp_recomendavel, tempo_colheita, tempo_regar) {                             
+                                window.location.href = rota_salvar + "?nome=" + encodeURIComponent(nome) + "&imagem=" + encodeURIComponent(imagem) + "&dica=" + encodeURIComponent(dica) + "&temp_recomendavel=" + encodeURIComponent(temp_recomendavel)+ "&tempo_colheita=" + encodeURIComponent(tempo_colheita) + "&tempo_regar=" + encodeURIComponent(tempo_regar);
+                            }
+
+
+
+                            function carregar() {
+                              fetch('../variantes/abobora.json')
+                                .then(response => response.json())
+                                .then(vegetais => {
+
+
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  vegetais.map(vegetal => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = vegetal.imagem
+                                    img.alt = vegetal.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = vegetal.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.addEventListener("click", function() {
+                                        handleClick(vegetal.rota_salvar, vegetal.nome, vegetal.imagem, vegetal.dica, vegetal.temp_recomendavel, vegetal.tempo_colheita, vegetal.tempo_regar);
+                                    });
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div>   
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/categoria_vegetais">Voltar</a>
+                  </div>   
+              </div>  
+          <?php } ?>
+
+
+
+          <?php if(isset($_GET['variante_vegetais_feijao'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Feijão</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script defer>
+
+                            function handleClick(rota_salvar, nome, imagem, dica, temp_recomendavel, tempo_colheita, tempo_regar) {                             
+                                window.location.href = rota_salvar + "?nome=" + encodeURIComponent(nome) + "&imagem=" + encodeURIComponent(imagem) + "&dica=" + encodeURIComponent(dica) + "&temp_recomendavel=" + encodeURIComponent(temp_recomendavel)+ "&tempo_colheita=" + encodeURIComponent(tempo_colheita) + "&tempo_regar=" + encodeURIComponent(tempo_regar);
+                            }
+
+
+
+                            function carregar() {
+                              fetch('../variantes/feijao.json')
+                                .then(response => response.json())
+                                .then(vegetais => {
+
+
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  vegetais.map(vegetal => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = vegetal.imagem
+                                    img.alt = vegetal.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = vegetal.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.addEventListener("click", function() {
+                                        handleClick(vegetal.rota_salvar, vegetal.nome, vegetal.imagem, vegetal.dica, vegetal.temp_recomendavel, vegetal.tempo_colheita, vegetal.tempo_regar);
+                                    });
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div>   
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/categoria_vegetais">Voltar</a>
+                  </div>   
+              </div>  
+          <?php } ?>
+
+          <?php if(isset($_GET['variante_vegetais_pimentao'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Pimentão</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script defer>
+
+                            function handleClick(rota_salvar, nome, imagem, dica, temp_recomendavel, tempo_colheita, tempo_regar) {                             
+                                window.location.href = rota_salvar + "?nome=" + encodeURIComponent(nome) + "&imagem=" + encodeURIComponent(imagem) + "&dica=" + encodeURIComponent(dica) + "&temp_recomendavel=" + encodeURIComponent(temp_recomendavel)+ "&tempo_colheita=" + encodeURIComponent(tempo_colheita) + "&tempo_regar=" + encodeURIComponent(tempo_regar);
+                            }
+
+
+
+                            function carregar() {
+                              fetch('../variantes/pimentao.json')
+                                .then(response => response.json())
+                                .then(vegetais => {
+
+
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  vegetais.map(vegetal => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = vegetal.imagem
+                                    img.alt = vegetal.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = vegetal.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.addEventListener("click", function() {
+                                        handleClick(vegetal.rota_salvar, vegetal.nome, vegetal.imagem, vegetal.dica, vegetal.temp_recomendavel, vegetal.tempo_colheita, vegetal.tempo_regar);
+                                    });
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div>     
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/categoria_vegetais">Voltar</a>
+                  </div>   
+              </div>
+          <?php } ?>
+
+
+
+          <?php if(isset($_GET['variante_vegetais_batata'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Batata</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script defer>
+
+                            function handleClick(rota_salvar, nome, imagem, dica, temp_recomendavel, tempo_colheita, tempo_regar) {                             
+                                window.location.href = rota_salvar + "?nome=" + encodeURIComponent(nome) + "&imagem=" + encodeURIComponent(imagem) + "&dica=" + encodeURIComponent(dica) + "&temp_recomendavel=" + encodeURIComponent(temp_recomendavel)+ "&tempo_colheita=" + encodeURIComponent(tempo_colheita) + "&tempo_regar=" + encodeURIComponent(tempo_regar);
+                            }
+
+
+
+                            function carregar() {
+                              fetch('../variantes/batata.json')
+                                .then(response => response.json())
+                                .then(vegetais => {
+
+
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  vegetais.map(vegetal => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = vegetal.imagem
+                                    img.alt = vegetal.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = vegetal.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.addEventListener("click", function() {
+                                        handleClick(vegetal.rota_salvar, vegetal.nome, vegetal.imagem, vegetal.dica, vegetal.temp_recomendavel, vegetal.tempo_colheita, vegetal.tempo_regar);
+                                    });
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div>     
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/categoria_vegetais">Voltar</a>
+                  </div>   
+              </div>
+          <?php } ?>
+          
+
+          <?php if(isset($_GET['variante_vegetais_cenoura'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Cenoura</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script defer>
+
+                            function handleClick(rota_salvar, nome, imagem, dica, temp_recomendavel, tempo_colheita, tempo_regar) {                             
+                                window.location.href = rota_salvar + "?nome=" + encodeURIComponent(nome) + "&imagem=" + encodeURIComponent(imagem) + "&dica=" + encodeURIComponent(dica) + "&temp_recomendavel=" + encodeURIComponent(temp_recomendavel)+ "&tempo_colheita=" + encodeURIComponent(tempo_colheita) + "&tempo_regar=" + encodeURIComponent(tempo_regar);
+                            }
+
+
+
+                            function carregar() {
+                              fetch('../variantes/cenoura.json')
+                                .then(response => response.json())
+                                .then(vegetais => {
+
+
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  vegetais.map(vegetal => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = vegetal.imagem
+                                    img.alt = vegetal.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = vegetal.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.addEventListener("click", function() {
+                                        handleClick(vegetal.rota_salvar, vegetal.nome, vegetal.imagem, vegetal.dica, vegetal.temp_recomendavel, vegetal.tempo_colheita, vegetal.tempo_regar);
+                                    });
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div>     
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/categoria_vegetais">Voltar</a>
+                  </div>   
+              </div>
+          <?php } ?>
+
+          <!--Frutas-->
+
+          <?php if(isset($_GET['category_fruit'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Frutas</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script>
+                            function carregar() {
+                              fetch('../categorias/frutas.json')
+                                .then(response => response.json())
+                                .then(frutas => {
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  frutas.map(fruta => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = fruta.imagem
+                                    img.alt = fruta.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = fruta.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.href = fruta.rota_variante
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div>     
+
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/nova_plantacao">Voltar</a>
+                  </div>   
+              </div>
+          <?php } ?>
+
+
+          <?php if(isset($_GET['variante_frutas_acerola'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Acerola</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script defer>
+
+                            function handleClick(rota_salvar, nome, imagem, dica, temp_recomendavel, tempo_colheita, tempo_regar) {                             
+                                window.location.href = rota_salvar + "?nome=" + encodeURIComponent(nome) + "&imagem=" + encodeURIComponent(imagem) + "&dica=" + encodeURIComponent(dica) + "&temp_recomendavel=" + encodeURIComponent(temp_recomendavel)+ "&tempo_colheita=" + encodeURIComponent(tempo_colheita) + "&tempo_regar=" + encodeURIComponent(tempo_regar);
+                            }
+
+
+
+                            function carregar() {
+                              fetch('../variantes/acerola.json')
+                                .then(response => response.json())
+                                .then(frutas => {
+
+
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  frutas.map(fruta => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = fruta.imagem
+                                    img.alt = fruta.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = fruta.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.addEventListener("click", function() {
+                                        handleClick(fruta.rota_salvar, fruta.nome, fruta.imagem, fruta.dica, fruta.temp_recomendavel, fruta.tempo_colheita, fruta.tempo_regar);
+                                    });
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div> 
+              
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/categoria_frutas">Voltar</a>
+                  </div>   
+              </div>
+          <?php } ?>
+
+          <?php if(isset($_GET['variante_frutas_laranja'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Laranja</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script defer>
+
+                            function handleClick(rota_salvar, nome, imagem, dica, temp_recomendavel, tempo_colheita, tempo_regar) {                             
+                                window.location.href = rota_salvar + "?nome=" + encodeURIComponent(nome) + "&imagem=" + encodeURIComponent(imagem) + "&dica=" + encodeURIComponent(dica) + "&temp_recomendavel=" + encodeURIComponent(temp_recomendavel)+ "&tempo_colheita=" + encodeURIComponent(tempo_colheita) + "&tempo_regar=" + encodeURIComponent(tempo_regar);
+                            }
+
+
+
+                            function carregar() {
+                              fetch('../variantes/laranja.json')
+                                .then(response => response.json())
+                                .then(frutas => {
+
+
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  frutas.map(fruta => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = fruta.imagem
+                                    img.alt = fruta.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = fruta.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.addEventListener("click", function() {
+                                        handleClick(fruta.rota_salvar, fruta.nome, fruta.imagem, fruta.dica, fruta.temp_recomendavel, fruta.tempo_colheita, fruta.tempo_regar);
+                                    });
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div>    
+
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/categoria_frutas">Voltar</a>
+                  </div>   
+              </div>
+          <?php } ?>
+
+
+          <?php if(isset($_GET['variante_frutas_limao'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Limão</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script defer>
+
+                            function handleClick(rota_salvar, nome, imagem, dica, temp_recomendavel, tempo_colheita, tempo_regar) {                             
+                                window.location.href = rota_salvar + "?nome=" + encodeURIComponent(nome) + "&imagem=" + encodeURIComponent(imagem) + "&dica=" + encodeURIComponent(dica) + "&temp_recomendavel=" + encodeURIComponent(temp_recomendavel)+ "&tempo_colheita=" + encodeURIComponent(tempo_colheita) + "&tempo_regar=" + encodeURIComponent(tempo_regar);
+                            }
+
+
+
+                            function carregar() {
+                              fetch('../variantes/limao.json')
+                                .then(response => response.json())
+                                .then(frutas => {
+
+
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  frutas.map(fruta => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = fruta.imagem
+                                    img.alt = fruta.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = fruta.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.addEventListener("click", function() {
+                                        handleClick(fruta.rota_salvar, fruta.nome, fruta.imagem, fruta.dica, fruta.temp_recomendavel, fruta.tempo_colheita, fruta.tempo_regar);
+                                    });
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div>    
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/categoria_frutas">Voltar</a>
+                  </div>   
+              </div> 
+          <?php } ?>
+
+          <?php if(isset($_GET['variante_frutas_maca'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Maçã</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script defer>
+
+                            function handleClick(rota_salvar, nome, imagem, dica, temp_recomendavel, tempo_colheita, tempo_regar) {                             
+                                window.location.href = rota_salvar + "?nome=" + encodeURIComponent(nome) + "&imagem=" + encodeURIComponent(imagem) + "&dica=" + encodeURIComponent(dica) + "&temp_recomendavel=" + encodeURIComponent(temp_recomendavel)+ "&tempo_colheita=" + encodeURIComponent(tempo_colheita) + "&tempo_regar=" + encodeURIComponent(tempo_regar);
+                            }
+
+
+
+                            function carregar() {
+                              fetch('../variantes/maca.json')
+                                .then(response => response.json())
+                                .then(frutas => {
+
+
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  frutas.map(fruta => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = fruta.imagem
+                                    img.alt = fruta.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = fruta.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.addEventListener("click", function() {
+                                        handleClick(fruta.rota_salvar, fruta.nome, fruta.imagem, fruta.dica, fruta.temp_recomendavel, fruta.tempo_colheita, fruta.tempo_regar);
+                                    });
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div>   
+              
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/categoria_frutas">Voltar</a>
+                  </div>   
+              </div>
+          <?php } ?>
+
+          <?php if(isset($_GET['variante_frutas_abacaxi'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Abacaxi</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script defer>
+
+                            function handleClick(rota_salvar, nome, imagem, dica, temp_recomendavel, tempo_colheita, tempo_regar) {                             
+                                window.location.href = rota_salvar + "?nome=" + encodeURIComponent(nome) + "&imagem=" + encodeURIComponent(imagem) + "&dica=" + encodeURIComponent(dica) + "&temp_recomendavel=" + encodeURIComponent(temp_recomendavel)+ "&tempo_colheita=" + encodeURIComponent(tempo_colheita) + "&tempo_regar=" + encodeURIComponent(tempo_regar);
+                            }
+
+
+
+                            function carregar() {
+                              fetch('../variantes/abacaxi.json')
+                                .then(response => response.json())
+                                .then(frutas => {
+
+
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  frutas.map(fruta => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = fruta.imagem
+                                    img.alt = fruta.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = fruta.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.addEventListener("click", function() {
+                                        handleClick(fruta.rota_salvar, fruta.nome, fruta.imagem, fruta.dica, fruta.temp_recomendavel, fruta.tempo_colheita, fruta.tempo_regar);
+                                    });
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div>   
+              
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/categoria_frutas">Voltar</a>
+                  </div>   
+              </div>
+          <?php } ?>
+
+          <?php if(isset($_GET['variante_frutas_caqui'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Caqui</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script defer>
+
+                            function handleClick(rota_salvar, nome, imagem, dica, temp_recomendavel, tempo_colheita, tempo_regar) {                             
+                                window.location.href = rota_salvar + "?nome=" + encodeURIComponent(nome) + "&imagem=" + encodeURIComponent(imagem) + "&dica=" + encodeURIComponent(dica) + "&temp_recomendavel=" + encodeURIComponent(temp_recomendavel)+ "&tempo_colheita=" + encodeURIComponent(tempo_colheita) + "&tempo_regar=" + encodeURIComponent(tempo_regar);
+                            }
+
+
+
+                            function carregar() {
+                              fetch('../variantes/caqui.json')
+                                .then(response => response.json())
+                                .then(frutas => {
+
+
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  frutas.map(fruta => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = fruta.imagem
+                                    img.alt = fruta.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = fruta.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.addEventListener("click", function() {
+                                        handleClick(fruta.rota_salvar, fruta.nome, fruta.imagem, fruta.dica, fruta.temp_recomendavel, fruta.tempo_colheita, fruta.tempo_regar);
+                                    });
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div>     
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/categoria_frutas">Voltar</a>
+                  </div>   
+              </div>
+          <?php } ?>
+
+          <?php if(isset($_GET['variante_frutas_carambola'])) { ?>  
+            <div class="row justify-content-center">
+                <div class="col-10 container-tipos-plantas">             
+                    <h1 class ="carousel-title">Carambola</h1>
+
+                    <div class ="row justify-content-center">
+                      <div class="card-group container_flores" id="flores_id">
+                        <script defer>
+
+                            function handleClick(rota_salvar, nome, imagem, dica, temp_recomendavel, tempo_colheita, tempo_regar) {                             
+                                window.location.href = rota_salvar + "?nome=" + encodeURIComponent(nome) + "&imagem=" + encodeURIComponent(imagem) + "&dica=" + encodeURIComponent(dica) + "&temp_recomendavel=" + encodeURIComponent(temp_recomendavel)+ "&tempo_colheita=" + encodeURIComponent(tempo_colheita) + "&tempo_regar=" + encodeURIComponent(tempo_regar);
+                            }
+
+
+
+                            function carregar() {
+                              fetch('../variantes/carambola.json')
+                                .then(response => response.json())
+                                .then(frutas => {
+
+
+                                  const container_flores = document.querySelector("#flores_id")
+
+                                  frutas.map(fruta => {
+                                    const card_flores = document.createElement("div")
+                                    card_flores.classList.add("card_flores")
+
+                                    const img = document.createElement("img");
+                                    img.src = fruta.imagem
+                                    img.alt = fruta.nome
+
+                                    const titulo = document.createElement("h3")
+                                    titulo.textContent = fruta.nome
+
+                                    const botao = document.createElement("a")
+                                    botao.classList.add("btn-card")
+                                    botao.textContent = "Selecionar"
+                                    botao.addEventListener("click", function() {
+                                        handleClick(fruta.rota_salvar, fruta.nome, fruta.imagem, fruta.dica, fruta.temp_recomendavel, fruta.tempo_colheita, fruta.tempo_regar);
+                                    });
+
+                                    card_flores.appendChild(img)
+                                    card_flores.appendChild(titulo)
+                                    card_flores.appendChild(botao)
+                                    container_flores.appendChild(card_flores)
+
+                                  })
+                                }) 
+                            }
+
+                            carregar()
+                        </script>
+                        
+                      </div>
+                    </div>
+                      
+                  </div>
+              </div>     
+
+              <div class="row justify-content-center">
+                  <div class="col-10">
+                    <a class="btn-voltar" href="/categoria_frutas">Voltar</a>
+                  </div>   
+              </div>
+          <?php } ?>
+
+
           </div>
         </div>
   </body>
+
 </html>

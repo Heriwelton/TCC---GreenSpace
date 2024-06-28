@@ -1,0 +1,37 @@
+
+
+[
+    {
+        "nome": "Caqui rama-forte",
+        "imagem": "../img/caqui.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar caqui Rama Forte, escolha um local ensolarado com solo bem drenado e pH neutro a ligeiramente ácido. Plante as mudas espaçadas a uma distância de cerca de 6 a 8 metros, garantindo uma boa profundidade de plantio.",
+        "temp_recomendavel": "7,30",
+        "tempo_colheita": "20 meses, +20 months",
+        "tempo_regar": "1 semana"
+    
+    },
+    {
+        "nome": "Caqui chocolate",
+        "imagem": "../img/caqui.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar caqui chocolate, escolha um local ensolarado com solo bem drenado e pH neutro a ligeiramente ácido. Plante as mudas espaçadas a uma distância de cerca de 6 a 8 metros, garantindo uma boa profundidade de plantio.",
+        "temp_recomendavel": "7,30",
+        "tempo_colheita": "20 meses, +20 months",
+        "tempo_regar": "1 semana"
+        
+    },
+    {
+        "nome": "Caqui Fuyu",
+        "imagem": "../img/caqui.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar caqui Fuyu, escolha um local ensolarado com solo bem drenado e pH neutro a ligeiramente ácido. Plante as mudas espaçadas a uma distância de cerca de 6 a 8 metros, garantindo uma boa profundidade de plantio.",
+        "temp_recomendavel": "7,30",
+        "tempo_colheita": "20 meses, +20 months",
+        "tempo_regar": "1 semana"
+        
+    }
+
+
+
+]

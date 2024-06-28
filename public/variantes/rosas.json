@@ -1,0 +1,45 @@
+
+
+[
+    {
+        "nome": "Rosa rasteira",
+        "imagem": "../img/rosa.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar e cultivar rosa rasteira, escolha um local com boa exposição solar, plante em solo bem drenado e fértil, e regue regularmente, mantendo o solo úmido, mas não encharcado. Adube mensalmente e faça podas leves para incentivar o crescimento.",
+        "temp_recomendavel": "15,28",
+        "tempo_colheita": "4 meses, +4 months",
+        "tempo_regar": "1 semana"
+    
+    },
+    {
+        "nome": "Rosa sempre-florida",
+        "imagem": "../img/rosa.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar rosas sempre-florida, escolha um local ensolarado e bem drenado, regando regularmente e aplicando adubo orgânico mensalmente para promover florações contínuas ao longo do ano.",
+        "temp_recomendavel": "15,30",
+        "tempo_colheita": "3 meses, +3 months",
+        "tempo_regar": "1 semana"
+        
+    },
+    {
+        "nome": "Rosa arbustiva",
+        "imagem": "../img/rosa.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar rosas arbustivas, selecione um local com boa exposição solar e solo bem drenado, mantenha as plantas bem regadas, e faça podas leves após a floração para promover o crescimento saudável e a produção de flores abundantes.",
+        "temp_recomendavel": "15,30",
+        "tempo_colheita": "4 meses, +4 months",
+        "tempo_regar": "1 semana"
+    },
+    {
+        "nome": "Rosa híbrida de chá",
+        "imagem": "../img/rosa.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar rosas híbridas de chá, escolha um local ensolarado com solo bem drenado, fertilize mensalmente durante a temporada de crescimento e faça podas leves após a floração para promover o desenvolvimento saudável e contínuo da planta.",
+        "temp_recomendavel": "15,30",
+        "tempo_colheita": "2 meses, +2 months",
+        "tempo_regar": "1 semana"
+    }
+
+
+
+]

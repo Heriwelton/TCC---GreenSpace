@@ -1,0 +1,45 @@
+
+
+[
+    {
+        "nome": "Orquídea Branca",
+        "imagem": "../img/orquidea.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar orquídeas brancas, como as Phalaenopsis, escolha um vaso com boa drenagem e utilize substrato específico para orquídeas, garantindo que as raízes fiquem bem aeradas.",
+        "temp_recomendavel": "18,30",
+        "tempo_colheita": "4 meses, +4 months",
+        "tempo_regar": "1 semana"
+    
+    },
+    {
+        "nome": "Orquídea Amarela",
+        "imagem": "../img/orquidea.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar orquídeas amarelas, como as Phalaenopsis amarelas, escolha um vaso com boa drenagem e utilize substrato específico para orquídeas, garantindo que as raízes fiquem bem aeradas.",
+        "temp_recomendavel": "18,30",
+        "tempo_colheita": "4 meses, +4 months",
+        "tempo_regar": "1 semana"
+        
+    },
+    {
+        "nome": "Orquídea Rosa",
+        "imagem": "../img/orquidea.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar orquídeas rosas, como as Phalaenopsis rosa, escolha um vaso com boa drenagem e utilize substrato específico para orquídeas, garantindo que as raízes fiquem bem aeradas.",
+        "temp_recomendavel": "18,30",
+        "tempo_colheita": "4 meses, +4 months",
+        "tempo_regar": "1 semana"
+    },
+    {
+        "nome": "Orquídea Lilás",
+        "imagem": "../img/orquidea.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar orquídeas lilás, como as Phalaenopsis lilás, escolha um vaso com boa drenagem e utilize substrato específico para orquídeas, garantindo que as raízes fiquem bem aeradas.",
+        "temp_recomendavel": "18,30",
+        "tempo_colheita": "4 meses, +4 months",
+        "tempo_regar": "1 semana"
+    }
+
+
+
+]

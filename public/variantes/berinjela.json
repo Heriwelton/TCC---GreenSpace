@@ -1,0 +1,45 @@
+
+
+[
+    {
+        "nome": "Berinjela napolitana",
+        "imagem": "../img/berinjela.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar berinjela napolitana, escolha um local ensolarado com solo bem drenado, plante as mudas ou sementes, mantendo uma distância adequada entre as plantas para permitir seu desenvolvimento saudável mantendo o solo úmido, mas não encharcado.",
+        "temp_recomendavel": "18,30",
+        "tempo_colheita": "3 meses, +3 months",
+        "tempo_regar": "1 semana"
+    
+    },
+    {
+        "nome": "Berinjela roma",
+        "imagem": "../img/berinjela.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar berinjela roma, escolha um local ensolarado com solo bem drenado, plante as mudas ou sementes, mantendo uma distância adequada entre as plantas para permitir seu desenvolvimento saudável mantendo o solo úmido, mas não encharcado.",
+        "temp_recomendavel": "20,30",
+        "tempo_colheita": "3 meses, +3 months",
+        "tempo_regar": "1 semana"
+        
+    },
+    {
+        "nome": "Berinjela romanita",
+        "imagem": "../img/berinjela.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar berinjela romanita, escolha um local ensolarado com solo bem drenado, plante as mudas ou sementes, mantendo uma distância adequada entre as plantas para permitir seu desenvolvimento saudável mantendo o solo úmido, mas não encharcado.",
+        "temp_recomendavel": "18,30",
+        "tempo_colheita": "3 meses, +3 months",
+        "tempo_regar": "1 semana"
+    },
+    {
+        "nome": "Berinjela milaneza",
+        "imagem": "../img/berinjela.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar berinjela milaneza, escolha um local ensolarado com solo bem drenado, plante as mudas ou sementes, mantendo uma distância adequada entre as plantas para permitir seu desenvolvimento saudável mantendo o solo úmido, mas não encharcado.",
+        "temp_recomendavel": "18,30",
+        "tempo_colheita": "3 meses, +3 months",
+        "tempo_regar": "1 semana"
+    }
+
+
+
+]

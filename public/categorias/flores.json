@@ -1,0 +1,39 @@
+[
+    {
+        "nome": "Rosa",
+        "imagem": "../img/rosa.png",
+        "rota_variante": "/variante_flores_rosa"
+    },
+    {
+        "nome": "Margarida",
+        "imagem": "../img/categoria_flor.png",
+        "rota_variante": "/variante_flores_margarida"
+        
+    },
+    {
+        "nome": "Tulipa",
+        "imagem": "../img/tulipa.png",
+        "rota_variante": "/variante_flores_tulipa"
+    },
+    {
+        "nome": "Jasmim",
+        "imagem": "../img/jasmim.png",
+        "rota_variante": "/variante_flores_jasmim"
+    },
+    {
+        "nome": "Lírio",
+        "imagem": "../img/lirio.png",
+        "rota_variante": "/variante_flores_lirio"
+    },
+    {
+        "nome": "Girassol",
+        "imagem": "../img/girassol.png",
+        "rota_variante": "/variante_flores_girassol"
+    },
+    {
+        "nome": "Orquidia",
+        "imagem": "../img/orquidea.png",
+        "rota_variante": "/variante_flores_orquidea"
+    }
+
+]

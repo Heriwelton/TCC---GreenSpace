@@ -1,0 +1,42 @@
+[
+    {
+        "nome": "Margarida Shasta",
+        "imagem": "../img/categoria_flor.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar Margarida Shasta, escolha um local ensolarado e bem drenado, regando regularmente para manter o solo úmido, e faça a remoção das flores desbotadas para promover florações contínuas ao longo da estação.",
+        "temp_recomendavel": "10,30",
+        "tempo_colheita": "2 meses, +2 months",
+        "tempo_regar": "1 semana"
+    
+    },
+    {
+        "nome": "Margarida amarela",
+        "imagem": "../img/categoria_flor.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar Margarida Amarela, escolha um local ensolarado com solo bem drenado, regando regularmente durante o crescimento ativo e fazendo a remoção das flores murchas para prolongar a floração.",
+        "temp_recomendavel": "10,25",
+        "tempo_colheita": "2 meses, +2 months",
+        "tempo_regar": "4 dias"
+        
+    },
+    {
+        "nome": "Rudbeckia",
+        "imagem": "../img/categoria_flor.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar Rudbeckia, selecione um local ensolarado com solo bem drenado, regando regularmente durante o crescimento ativo e removendo as flores desbotadas para estimular a floração contínua.",
+        "temp_recomendavel": "10,30",
+        "tempo_colheita": "2 meses, +2 months",
+        "tempo_regar": "1 semana"
+    },
+    {
+        "nome": "Camomila",
+        "imagem": "../img/categoria_flor.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar camomila, selecione um local ensolarado com solo bem drenado, mantenha o solo úmido durante o crescimento ativo e colha as flores quando estiverem totalmente abertas para uso.",
+        "temp_recomendavel": "15,30",
+        "tempo_colheita": "3 meses, +3 months",
+        "tempo_regar": "1 semana"
+    }
+
+
+]

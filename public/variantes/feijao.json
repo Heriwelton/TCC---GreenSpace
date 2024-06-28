@@ -1,0 +1,45 @@
+
+
+[
+    {
+        "nome": "Feijão branco",
+        "imagem": "../img/feijao.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar feijão branco, escolha um local ensolarado com solo bem drenado e rico em matéria orgânica. Plante a uma profundidade de cerca de 2 a 3 centímetros, espaçando-as adequadamente para permitir o crescimento saudável das plantas",
+        "temp_recomendavel": "18,30",
+        "tempo_colheita": "4 meses, +4 months",
+        "tempo_regar": "1 semana"
+    
+    },
+    {
+        "nome": "Feijão carioca",
+        "imagem": "../img/feijao.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar feijão carioca, escolha um local ensolarado com solo bem drenado e rico em matéria orgânica. Plante a uma profundidade de cerca de 2 a 3 centímetros, espaçando-as adequadamente para permitir o crescimento saudável das plantas",
+        "temp_recomendavel": "18,30",
+        "tempo_colheita": "3 meses, +3 months",
+        "tempo_regar": "1 semana"
+        
+    },
+    {
+        "nome": "Feijão de corda",
+        "imagem": "../img/feijao.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar feijão de corda, escolha um local ensolarado com solo bem drenado e rico em matéria orgânica. Plante a uma profundidade de cerca de 2 a 3 centímetros, espaçando-as adequadamente para permitir o crescimento saudável das plantas",
+        "temp_recomendavel": "18,32",
+        "tempo_colheita": "3 meses, +3 months",
+        "tempo_regar": "1 semana"
+    },
+    {
+        "nome": "Feijão preto",
+        "imagem": "../img/feijao.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar feijão preto, escolha um local ensolarado com solo bem drenado e rico em matéria orgânica. Plante a uma profundidade de cerca de 2 a 3 centímetros, espaçando-as adequadamente para permitir o crescimento saudável das plantas",
+        "temp_recomendavel": "18,32",
+        "tempo_colheita": "3 meses, +3 months",
+        "tempo_regar": "1 semana"
+    }
+
+
+
+]

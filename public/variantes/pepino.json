@@ -1,0 +1,45 @@
+
+
+[
+    {
+        "nome": "Pepino Híbrido Durango",
+        "imagem": "../img/pepino.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar pepino híbrido Durango, selecione um local ensolarado com solo bem drenado, mantendo uma distância adequada entre as plantas para permitir o desenvolvimento saudável, e regue regularmente, mantendo o solo úmido, mas não encharcado.",
+        "temp_recomendavel": "18,32",
+        "tempo_colheita": "2 meses, +2 months",
+        "tempo_regar": "1 semana"
+    
+    },
+    {
+        "nome": "Pepino Híbrido Banglas",
+        "imagem": "../img/pepino.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar pepino Híbrido Banglas, selecione um local ensolarado com solo bem drenado, mantendo uma distância adequada entre as plantas para permitir o desenvolvimento saudável, e regue regularmente, mantendo o solo úmido, mas não encharcado.",
+        "temp_recomendavel": "18,32",
+        "tempo_colheita": "2 meses, +2 months",
+        "tempo_regar": "1 semana"
+        
+    },
+    {
+        "nome": "Pepino Híbrido Targa",
+        "imagem": "../img/pepino.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar pepino Híbrido Targa, selecione um local ensolarado com solo bem drenado, mantendo uma distância adequada entre as plantas para permitir o desenvolvimento saudável, e regue regularmente, mantendo o solo úmido, mas não encharcado.",
+        "temp_recomendavel": "18,32",
+        "tempo_colheita": "3 meses, +3 months",
+        "tempo_regar": "1 semana"
+    },
+    {
+        "nome": "Pepino Híbrido Nagai Japonês",
+        "imagem": "../img/pepino.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar Pepino Híbrido Nagai Japonês, selecione um local ensolarado com solo bem drenado, mantendo uma distância adequada entre as plantas para permitir o desenvolvimento saudável, e regue regularmente, mantendo o solo úmido, mas não encharcado.",
+        "temp_recomendavel": "18,32",
+        "tempo_colheita": "3 meses, +3 months",
+        "tempo_regar": "1 semana"
+    }
+
+
+
+]

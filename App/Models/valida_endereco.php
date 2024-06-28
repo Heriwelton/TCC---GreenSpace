@@ -9,7 +9,6 @@ session_start();
 
 class valida_endereco extends Model {
 
-    private $EnderecoID;
     private $UserID;
     private $CEP;
     private $Logradouro;
@@ -21,6 +20,7 @@ class valida_endereco extends Model {
     private $lat;
     private $lng;
 
+    
     public function __get($atributo){
         return $this->$atributo;
     }
@@ -45,7 +45,15 @@ class valida_endereco extends Model {
         $stmt->bindValue(':address', $this->__get('address'));
         $stmt->bindValue(':lat', $this->__get('lat'));
         $stmt->bindValue(':lng', $this->__get('lng'));
-        $stmt->execute();
+
+
+
+        
+        try {
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Erro ao inserir endereço: " . $e->getMessage();
+        }
         return $this;
 
 

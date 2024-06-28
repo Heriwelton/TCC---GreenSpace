@@ -1,0 +1,47 @@
+
+
+[
+    {
+        "nome": "Maçã fugi",
+        "imagem": "../img/maca.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar maçã Fuji, escolha um local ensolarado com solo bem drenado e regue regularmente durante o primeiro ano para um estabelecimento eficaz das raízes.",
+        "temp_recomendavel": "0,24",
+        "tempo_colheita": "18 meses, +18 months",
+        "tempo_regar": "1 semana"
+    
+    },
+    {
+        "nome": "Maçã gala",
+        "imagem": "../img/maca.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar maçã Fuji, escolha um local ensolarado com solo bem drenado e regue regularmente durante o primeiro ano para um estabelecimento eficaz das raízes.",
+        "temp_recomendavel": "0,24",
+        "tempo_colheita": "18 meses, +18 months",
+        "tempo_regar": "1 semana"
+        
+    },
+    {
+        "nome": "Maçã golden",
+        "imagem": "../img/maca.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar maçã Fuji, escolha um local ensolarado com solo bem drenado e regue regularmente durante o primeiro ano para um estabelecimento eficaz das raízes.",
+        "temp_recomendavel": "0,24",
+        "tempo_colheita": "20 meses, +3 months",
+        "tempo_regar": "1 semana"
+        
+    },
+    {
+        "nome": "Maçã Bravo de Esmolfe",
+        "imagem": "../img/maca.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar maçã Fuji, escolha um local ensolarado com solo bem drenado e regue regularmente durante o primeiro ano para um estabelecimento eficaz das raízes.",
+        "temp_recomendavel": "0,24",
+        "tempo_colheita": "20 meses, +20 months",
+        "tempo_regar": "1 semana"
+        
+    }
+
+
+
+]

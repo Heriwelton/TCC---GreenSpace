@@ -1,0 +1,152 @@
+
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Login - meu comércio</title>
+  </head>
+  
+  <body>
+    <div id="corpo-modulo-comunidade">
+      <nav class="navbar navbar-expand-sm navbar-dark navbar-custom">
+          <!--Logo-->
+          <div class="navbar-brand clima-custom">
+            <?php echo $_SESSION["cidade"] ?><span class="align-span"></span><span><?php echo $_SESSION["temperatura"]  ?>ºC</span> <img src="https://openweathermap.org/img/wn/<?php echo $_SESSION["icone"] ?>.png" alt='Weather Icon'> <span class="align-span"><?php echo $_SESSION["clima"] ?></span>
+          </div>
+
+          <!-- Menu Hamburguer -->
+          <button class="navbar-toggler" data-toggle="collapse" data-target="#navegacao3">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!--Navegaçao-->
+        <div class="collapse navbar-collapse" id="navegacao3">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                  <a  class="nav-link msg-recepcao disabled">Olá 
+                    
+                  <?php
+                        
+                  if($_SESSION["Nome"]) {
+                      
+                  echo $_SESSION["Nome"] ?>                                                               
+                  <?php } ?>
+
+                  </a>
+                </li>
+                
+                <li class="nav-item dropdown">
+                  <a href="" class="nav-link msg-recepcao dropdown-toggle" data-toggle="dropdown">Comunidade</a>
+                  <div class="dropdown-menu">
+                    <a href="/modulo_meu_jardim" class="dropdown-item">Meu Jardim</a>
+                    <a href="/modulo_meu_comercio?user_stock" class="dropdown-item">Meu Comércio</a>
+                    <a href="/modulo_vendedores" class="dropdown-item">Vendedores</a>
+                    <a href="/sair" class="dropdown-item">Sair</a>
+                  </div>
+
+                </li>
+
+            </ul>
+        </div>
+        
+        </nav>
+          <div class="container-custom">
+           
+
+          <div class="row justify-content-center">
+            <div class="col-5"><h1 class ="carousel-title-branco">Fórum</h1></div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-10 container-app">
+              <div class="postagem-container">
+                <div class="caixa-postagem">
+                  <h3 class="postagem-title">Nova Postagem</h3>
+                  <form method="post" action="/postagem">
+                    <textarea class="form-control textarea-resposta" name="texto_postagem"></textarea>
+
+                    <div class="radio-postagem">
+                      <input type="radio" id="duvida" name="tipo_postagem" value="duvida" >
+                      <label for="duvida">Dúvida</label>
+
+                      <input type="radio" id="curiosidade" name="tipo_postagem" value="curiosidade" class="ml-4">
+                      <label for="curiosidade">Curiosidade</label>
+
+                      <input type="radio" id="recomendacao" name="tipo_postagem" value="recomendacao" class="ml-4">
+                      <label for="recomendacao">Recomendação</label>
+                    </div>
+                    <div class="justify-content-end">
+                      <button type="submit" class="btn btn-postagem">Postar</button>
+                    </div>
+                    
+                  </form>
+                </div>
+
+                <?php
+                 
+                  $postagensAgrupadas = [];
+
+                  foreach($this->view->postagens as $postagem) {                     
+                      $postagensAgrupadas[$postagem['PostagemID']][] = $postagem;
+                  }
+
+
+                  foreach($postagensAgrupadas as $PostagemID => $postagens) {
+                    /*
+                    echo '<pre>';
+                    print_r($postagens);
+                    echo '</pre>';
+                    */
+                      $postagemPrincipal = $postagens[0];
+                      ?>
+                      <div class="postagem">
+                          <p><strong><?php echo $postagemPrincipal['Nome']; ?></strong> <span class="align-postagem"><strong>Tipo de postagem: </strong><span><?php echo $postagemPrincipal['TipoPostagem']; ?></span> <small><span>- <?php echo $postagemPrincipal['data']; ?></span></small></span></p>
+                          <p><?php echo $postagemPrincipal['Conteudo']; ?></p>
+
+                          <?php
+                          
+                          foreach($postagens as $postagem) {
+                              if(isset($postagem['Conteudo_Resposta'])) {
+                                  ?>
+                                  <p class="p-resposta">Resposta de: <?php echo $postagem['nome_resposta']; ?>   <small><span>- <?php echo $postagem['data_resposta']; ?></span></small> </strong></p>
+                                  <p><?php echo $postagem['Conteudo_Resposta']; ?></p>                  
+                                  <?php
+                              }
+                          }
+                          ?>
+
+                          <br />
+                          <?php if($postagemPrincipal['UserID'] == $_SESSION['UserID']) { ?>
+                          <form action="/excluir_postagem" method="post">
+                              <div class="justify-content-end">
+                                  <input type="hidden" name="postagemid"  value="<?php echo $postagemPrincipal["PostagemID"] ?>">
+                                  <button type="submit" class="btn btn-outline-danger">Remover</button>
+                              </div>
+                          </form>
+                          <?php } ?>
+
+                          <?php if($postagemPrincipal['UserID'] != $_SESSION['UserID']) { ?>
+                          <form action="/salvar_comentario" method="POST">
+                              <input type="hidden" name="postagemid" value="<?php echo $postagemPrincipal["PostagemID"] ?>">
+                              <textarea class="form-control textarea-resposta" placeholder="Insira seu comentario aqui..." name="texto_comentario" ></textarea>
+                              <button type="submit" class="btn btn-comentario">Comentar</button>                   
+                          </form>
+                          <?php } ?>
+
+                      </div>
+                      <?php
+                  }
+                  ?>
+
+              </div>
+             
+            </div>          
+          </div>      
+
+          
+
+          </div>
+        </div>
+  </body>
+
+</html>

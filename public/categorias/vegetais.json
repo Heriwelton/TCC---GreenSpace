@@ -1,0 +1,39 @@
+[
+    {
+        "nome": "berinjela",
+        "imagem": "../img/berinjela.png",
+        "rota_variante": "/variante_vegetais_berinjela"
+    },
+    {
+        "nome": "pepino",
+        "imagem": "../img/pepino.png",
+        "rota_variante": "/variante_vegetais_pepino"
+        
+    },
+    {
+        "nome": "abóbora",
+        "imagem": "../img/abobora.png",
+        "rota_variante": "/variante_vegetais_abobora"
+    },
+    {
+        "nome": "feijão",
+        "imagem": "../img/feijao.png",
+        "rota_variante": "/variante_vegetais_feijao"
+    },
+    {
+        "nome": "pimentão ",
+        "imagem": "../img/pimentao.png",
+        "rota_variante": "/variante_vegetais_pimentao"
+    },
+    {
+        "nome": "batata",
+        "imagem": "../img/batata.png",
+        "rota_variante": "/variante_vegetais_batata"
+    },
+    {
+        "nome": "cenoura",
+        "imagem": "../img/cenoura.png",
+        "rota_variante": "/variante_vegetais_cenoura"
+    }
+
+]

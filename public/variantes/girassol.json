@@ -1,0 +1,45 @@
+
+
+[
+    {
+        "nome": "Girassol Arranha-céu",
+        "imagem": "../img/girassol.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar Girassol Arranha-céu, escolha um local ensolarado e bem drenado, plante as sementes diretamente no solo na primavera, mantenha o solo úmido durante o período de germinação e crescimento inicial e forneça suporte, para as hastes altas.",
+        "temp_recomendavel": "18,30",
+        "tempo_colheita": "3 meses, +3 months",
+        "tempo_regar": "1 semana"
+    
+    },
+    {
+        "nome": "Girassol Pequeno Tigre",
+        "imagem": "../img/girassol.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar Girassol Pequeno Tigre, selecione um local ensolarado e bem drenado, plante as sementes diretamente no solo na primavera e forneça suporte às plantas conforme crescem para evitar que as hastes se dobrem.",
+        "temp_recomendavel": "18,25",
+        "tempo_colheita": "2 meses, +2 months",
+        "tempo_regar": "1 semana"
+        
+    },
+    {
+        "nome": "Girassol Gigante americano",
+        "imagem": "../img/girassol.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar Girassol Gigante americano, selecione um local ensolarado e bem drenado, plante as sementes diretamente no solo na primavera e forneça suporte às plantas conforme crescem para evitar que as hastes se dobrem.",
+        "temp_recomendavel": "18,30",
+        "tempo_colheita": "4 meses, +4 months",
+        "tempo_regar": "1 semana"
+    },
+    {
+        "nome": "Girassol Mamute russo",
+        "imagem": "../img/girassol.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar Girassol Mamute Russo, escolha um local ensolarado e bem drenado fornecendo suporte às hastes à medida que as plantas crescem. Esteja ciente do tamanho impressionante desses girassóis e dê-lhes espaço suficiente para crescerem.",
+        "temp_recomendavel": "15,30",
+        "tempo_colheita": "4 meses, +4 months",
+        "tempo_regar": "1 semana"
+    }
+
+
+
+]

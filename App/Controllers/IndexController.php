@@ -33,7 +33,7 @@ class IndexController extends Action {
 
 		$valida_cadastro->__set('Nome', $_POST['nome']);
 		$valida_cadastro->__set('Email', $_POST['email']);
-		$valida_cadastro->__set('Senha', $_POST['senha']);
+		$valida_cadastro->__set('Senha', md5($_POST['senha']));
 		
 		if($valida_cadastro->validarSenha()){
 			if($valida_cadastro->validarTamanhoSenha()){
@@ -41,7 +41,7 @@ class IndexController extends Action {
 					$valida_cadastro->salvar();
 
 					session_start();
-					$_SESSION['UserID'] = $valida_cadastro->valida_cadastro();	
+					$_SESSION['UserID'] = $valida_cadastro->valida_cadastro();
 
 					$this->render('redirecionar_cadastro_endereco');	
 
@@ -59,7 +59,7 @@ class IndexController extends Action {
 		
 		$valida_endereco = Container::getModel('valida_endereco');
 		
-		$valida_endereco->__set('UserID', $_SESSION['UserID']);
+		$valida_endereco->__set('UserID', $_SESSION['UserID'] ?? null);
 		$valida_endereco->__set('CEP',$_POST['cep']);
 		$valida_endereco->__set('Logradouro',$_POST['logradouro']);
 		$valida_endereco->__set('Complemento',$_POST['complemento']);
@@ -92,6 +92,8 @@ class IndexController extends Action {
 		$valida_endereco->__set('lng',number_format($longitude, 2, '.', ''));
  
 		$valida_endereco->salvar();
+
+		
 		session_destroy();
 		$this->render('redirecionar_login');	
 		

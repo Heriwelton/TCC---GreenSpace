@@ -1,0 +1,45 @@
+
+
+[
+    {
+        "nome": "Tulipa Bailarina",
+        "imagem": "../img/tulipa.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar Tulipa Bailarina, escolha um local ensolarado e bem drenado, plante os bulbos no outono, a uma profundidade de aproximadamente três vezes o tamanho do bulbo, regando regularmente durante o período de crescimento ativo.",
+        "temp_recomendavel": "10,20",
+        "tempo_colheita": "2 meses, +2 months",
+        "tempo_regar": "1 semana"
+    
+    },
+    {
+        "nome": "Tulipa Hermitage",
+        "imagem": "../img/tulipa.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar Tulipa Hermitage, selecione um local ensolarado e bem drenado, plante os bulbos no outono, a uma profundidade de aproximadamente três vezes o tamanho do bulbo, regando regularmente durante o período de crescimento ativo.",
+        "temp_recomendavel": "10,25",
+        "tempo_colheita": "2 meses, +2 months",
+        "tempo_regar": "1 semana"
+        
+    },
+    {
+        "nome": "Tulipa Rem’s Favourite",
+        "imagem": "../img/tulipa.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar Tulipa Rem's Favourite, escolha um local ensolarado e bem drenado, plante os bulbos no outono, a uma profundidade de aproximadamente três vezes o tamanho do bulbo, regando durante o período de crescimento ativo.",
+        "temp_recomendavel": "10,25",
+        "tempo_colheita": "1 meses, +1 months",
+        "tempo_regar": "1 semana"
+    },
+    {
+        "nome": "Tulipa Queen of Night",
+        "imagem": "../img/tulipa.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar Tulipa Queen of Night, selecione um local ensolarado e bem drenado, plante os bulbos no outono, a uma profundidade de aproximadamente três vezes o tamanho do bulbo, regando durante o período de crescimento ativo",
+        "temp_recomendavel": "10,25",
+        "tempo_colheita": "1 meses, +1 months",
+        "tempo_regar": "1 semana"
+    }
+
+
+
+]

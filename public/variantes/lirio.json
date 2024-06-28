@@ -1,0 +1,45 @@
+
+
+[
+    {
+        "nome": "Lírio Trombeta",
+        "imagem": "../img/lirio.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar lírios trombeta, escolha um local com sol pleno ou sombra parcial, plante os bulbos no outono, a uma profundidade de aproximadamente três vezes o tamanho do bulbo, fornecendo um solo bem drenado para evitar o acúmulo de água.",
+        "temp_recomendavel": "15,30",
+        "tempo_colheita": "2 meses, +2 months",
+        "tempo_regar": "1 semana"
+    
+    },
+    {
+        "nome": "Lírio Asiático",
+        "imagem": "../img/lirio.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar Lírio Asiático, escolha um local com sol pleno ou sombra parcial, plante os bulbos no outono, a uma profundidade de aproximadamente três vezes o tamanho do bulbo, fornecendo um solo bem drenado para evitar o acúmulo de água.",
+        "temp_recomendavel": "10,25",
+        "tempo_colheita": "3 meses, +3 months",
+        "tempo_regar": "1 semana"
+        
+    },
+    {
+        "nome": "Lírio Martagon",
+        "imagem": "../img/lirio.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar lírios martagon, selecione um local com sombra parcial ou pleno sol, plante os bulbos no outono, enterrando-os a uma profundidade de aproximadamente três vezes o tamanho do bulbo, e garanta um solo bem drenado para evitar o encharcamento.",
+        "temp_recomendavel": "5,25",
+        "tempo_colheita": "3 meses, +3 months",
+        "tempo_regar": "1 semana"
+    },
+    {
+        "nome": "Lírio Tigre",
+        "imagem": "../img/lirio.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar lírios tigre, escolha um local com sol pleno ou sombra parcial, plante os bulbos na primavera ou no outono, a uma profundidade de aproximadamente três vezes o tamanho do bulbo, fornecendo solo bem drenado para evitar o acúmulo de água.",
+        "temp_recomendavel": "10,25",
+        "tempo_colheita": "2 meses, +2 months",
+        "tempo_regar": "1 semana"
+    }
+
+
+
+]

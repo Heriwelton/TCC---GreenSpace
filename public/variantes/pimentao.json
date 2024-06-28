@@ -1,0 +1,45 @@
+
+
+[
+    {
+        "nome": "Pimentão Verde",
+        "imagem": "../img/pimentao.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar pimentão verde, selecione um local ensolarado com solo bem drenado e rico em matéria orgânica, espaçando-as adequadamente para permitir o crescimento saudável das plantas.",
+        "temp_recomendavel": "18,32",
+        "tempo_colheita": "3 meses, +3 months",
+        "tempo_regar": "1 semana"
+    
+    },
+    {
+        "nome": "Pimentão Vermelho",
+        "imagem": "../img/pimentao.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar pimentão Vermelho, selecione um local ensolarado com solo bem drenado e rico em matéria orgânica, espaçando-as adequadamente para permitir o crescimento saudável das plantas.",
+        "temp_recomendavel": "18,32",
+        "tempo_colheita": "3 meses, +3 months",
+        "tempo_regar": "1 semana"
+        
+    },
+    {
+        "nome": "Pimentão Cubanelle",
+        "imagem": "../img/pimentao.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar pimentão Cubanelle, selecione um local ensolarado com solo bem drenado e rico em matéria orgânica, espaçando-as adequadamente para permitir o crescimento saudável das plantas.",
+        "temp_recomendavel": "18,32",
+        "tempo_colheita": "3 meses, +3 months",
+        "tempo_regar": "1 semana"
+    },
+    {
+        "nome": "Pimentão Italiano",
+        "imagem": "../img/pimentao.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar pimentão Italiano, selecione um local ensolarado com solo bem drenado e rico em matéria orgânica, espaçando-as adequadamente para permitir o crescimento saudável das plantas.",
+        "temp_recomendavel": "18,32",
+        "tempo_colheita": "3 meses, +3 months",
+        "tempo_regar": "1 semana"
+    }
+
+
+
+]

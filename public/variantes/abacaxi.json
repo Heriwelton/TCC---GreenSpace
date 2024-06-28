@@ -1,0 +1,27 @@
+
+
+[
+    {
+        "nome": "Abacaxi pérola",
+        "imagem": "../img/abacaxi.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar abacaxi Pérola, escolha um local ensolarado, plante as coroas espaçadas, garantindo um espaçamento de cerca de 60 a 90 centímetros entre as plantas. e mantenha o solo úmido, mas não encharcado.",
+        "temp_recomendavel": "20,35",
+        "tempo_colheita": "6 meses, +6 months",
+        "tempo_regar": "1 semana"
+    
+    },
+    {
+        "nome": "Abacaxi ornamental",
+        "imagem": "../img/abacaxi.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar abacaxi ornamental, escolha um local ensolarado, plante as coroas espaçadas, garantindo um espaçamento de cerca de 60 a 90 centímetros entre as plantas. e mantenha o solo úmido, mas não encharcado.",
+        "temp_recomendavel": "20,35",
+        "tempo_colheita": "6 meses, +6 months",
+        "tempo_regar": "1 semana"
+        
+    }
+
+
+
+]

@@ -1,0 +1,45 @@
+
+
+[
+    {
+        "nome": "Batata inglesa",
+        "imagem": "../img/batata.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar batata inglesa, escolha um local com solo bem drenado e sol pleno. Plante os tubérculos de batata em covas espaçadas a uma profundidade de cerca de 10 a 15 centímetros e mantenha o solo úmido durante o período de crescimento.",
+        "temp_recomendavel": "10,25",
+        "tempo_colheita": "4 meses, +4 months",
+        "tempo_regar": "1 semana"
+    
+    },
+    {
+        "nome": "Batata doce",
+        "imagem": "../img/batata.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar batata doce, escolha um local ensolarado com solo bem drenado e solto. Plante as mudas ou brotos de batata doce em canteiros elevados ou em solos arenosos para facilitar o desenvolvimento das raízes.",
+        "temp_recomendavel": "20,35",
+        "tempo_colheita": "5 meses, +5 months",
+        "tempo_regar": "1 semana"
+        
+    },
+    {
+        "nome": "Batata asterix",
+        "imagem": "../img/batata.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar batata asterix, selecione um local com solo bem drenado e sol pleno. Plante os tubérculos de batata em covas espaçadas a uma profundidade de cerca de 10 a 15 centímetros e mantenha o solo úmido durante o período de crescimento.",
+        "temp_recomendavel": "20,35",
+        "tempo_colheita": "4 meses, +4 months",
+        "tempo_regar": "1 semana"
+    },
+    {
+        "nome": "Batata yacon",
+        "imagem": "../img/batata.png",
+        "rota_salvar":"/salvar_item",
+        "dica": "Para plantar batata yacon, escolha um local com solo bem drenado e sol  parcial. Plante os rizomas de yacon em covas espaçadas a uma profundidade de cerca de 10 a 15 centímetros, com uma distância de aproximadamente 60 a 90 centímetros entre as plantas.",
+        "temp_recomendavel": "15,32",
+        "tempo_colheita": "4 meses, +4 months",
+        "tempo_regar": "1 semana"
+    }
+
+
+
+]

@@ -1,0 +1,39 @@
+[
+    {
+        "nome": "acerola",
+        "imagem": "../img/acerola.png",
+        "rota_variante": "/variante_frutas_acerola"
+    },
+    {
+        "nome": "laranja",
+        "imagem": "../img/laranja.png",
+        "rota_variante": "/variante_frutas_laranja"
+        
+    },
+    {
+        "nome": "limão",
+        "imagem": "../img/limao.png",
+        "rota_variante": "/variante_frutas_limao"
+    },
+    {
+        "nome": "maçã",
+        "imagem": "../img/maca.png",
+        "rota_variante": "/variante_frutas_maca"
+    },
+    {
+        "nome": "abacaxi ",
+        "imagem": "../img/abacaxi.png",
+        "rota_variante": "/variante_frutas_abacaxi"
+    },
+    {
+        "nome": "caqui",
+        "imagem": "../img/caqui.png",
+        "rota_variante": "/variante_frutas_caqui"
+    },
+    {
+        "nome": "carambola",
+        "imagem": "../img/carambola.png",
+        "rota_variante": "/variante_frutas_carambola"
+    }
+
+]
